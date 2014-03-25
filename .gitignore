@@ -1,5 +1,4 @@
 *.class
-*.classpath
 target/
 
 # Mobile Tools for Java (J2ME)
@@ -29,6 +28,7 @@ local.properties
 .settings/
 .loadpath
 .project
+.classpath
 
 # External tool builders
 .externalToolBuilders/
