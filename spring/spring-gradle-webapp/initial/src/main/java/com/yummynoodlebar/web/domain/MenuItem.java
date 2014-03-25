@@ -1,35 +1,19 @@
-package com.yummynoodlebar.core.domain;
+package com.yummynoodlebar.web.domain;
 
 import java.math.BigDecimal;
-import java.util.Set;
+
+import org.springframework.beans.BeanUtils;
+
+import com.yummynoodlebar.events.menu.MenuItemDetails;
 
 public class MenuItem {
 
 	private String id;
 	private String name;
-	private String description;
-
-	private Set<Ingredient> ingredients;
 
 	private BigDecimal cost;
 
 	private int minutesToPrepare;
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Set<Ingredient> getIngredients() {
-		return ingredients;
-	}
-
-	public void setIngredients(Set<Ingredient> ingredients) {
-		this.ingredients = ingredients;
-	}
 
 	public String getId() {
 		return id;
@@ -62,4 +46,11 @@ public class MenuItem {
 	public void setMinutesToPrepare(int minutesToPrepare) {
 		this.minutesToPrepare = minutesToPrepare;
 	}
+
+	public static MenuItem fromMenuDetails(MenuItemDetails menuItemDetails) {
+		MenuItem menuItem = new MenuItem();
+		BeanUtils.copyProperties(menuItemDetails, menuItem);
+		return menuItem;
+	}
+
 }
