@@ -50,13 +50,6 @@ object session {;import org.scalaide.worksheet.runtime.library.WorksheetSupport.
         loop(1, n)
     };System.out.println("""factorial_tail_recursive: (n: Int)Int""");$skip(35); val res$7 = 
 
-    factorial_tail_recursive(4);System.out.println("""res7: Int = """ + $show(res$7));$skip(123); ;
+    factorial_tail_recursive(4);;System.out.println("""res7: Int = """ + $show(res$7))}
 
-    def sum(xs: List[Int]): Int = {
-        if (!xs.isEmpty) {
-            xs.head + sum(xs.tail)
-        } else 0
-    };System.out.println("""sum: (xs: List[Int])Int""");$skip(25); val res$8 = 
-
-    sum(List(1, 2, 3));System.out.println("""res8: Int = """ + $show(res$8))}
 }

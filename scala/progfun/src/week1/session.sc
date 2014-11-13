@@ -52,11 +52,4 @@ object session {
 
     factorial_tail_recursive(4);                  //> res7: Int = 24
 
-    def sum(xs: List[Int]): Int = {
-        if (!xs.isEmpty) {
-            xs.head + sum(xs.tail)
-        } else 0
-    }                                             //> sum: (xs: List[Int])Int
-
-    sum(List(1, 2, 3))                            //> res8: Int = 6
 }
