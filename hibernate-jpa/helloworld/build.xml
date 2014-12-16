@@ -1,4 +1,4 @@
-<project name="hibernate-and-hsqldb" default="compile" basedir=".">
+<project name="helloworld" default="compile" basedir=".">
     <property name="proj.name" value="helloworld" />
     <property name="proj.version" value="1.0" />
 

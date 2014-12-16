@@ -53,6 +53,7 @@ public class HelloWorld {
 	}
 
 	private static void thirdUnitOfWork() {
+		// Third unit of work
 		Session thirdSession = HibernateUtil.getSessionFactory().openSession();
 		Transaction thirdTransaction = thirdSession.beginTransaction();
 		
