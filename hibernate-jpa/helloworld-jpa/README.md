@@ -1,4 +1,4 @@
-# Helloworld with standard JPA & Annotations 
+# Helloworld with standard JPA + Annotations 
 
 ## How to execute application
 

@@ -1,4 +1,4 @@
-# Helloworld with native Hibernate 
+# Helloworld with EJB3 + standard JPA + Annotations
 
 ## How to execute application
 
@@ -16,7 +16,7 @@
     
     or
     
-    b.  Eclipse: Run As... Java Application 
+    b.  Eclipse: Run As... Java Application (==> gives error)
     
 4.  run dbmanager
     
