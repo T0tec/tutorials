@@ -7,4 +7,7 @@ test.*
 *.sql
 
 # Exclude lib folder filled with needed libraries (jar's)
+!helloworld-ejb3/lib/*.jar
 !helloworld-native/lib/*.jar
+!helloworld-jpa/lib/*.jar
+!helloworld-reverse/lib/*.jar

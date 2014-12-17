@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 17, 2014 4:25:10 PM by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+    <class name="org.t0tec.tutorials.helloworld.Messages" table="MESSAGES" schema="PUBLIC" catalog="PUBLIC">
+        <id name="messageId" type="long">
+            <column name="MESSAGE_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="messages" class="org.t0tec.tutorials.helloworld.Messages" fetch="select">
+            <column name="NEXT_MESSAGE_ID" />
+        </many-to-one>
+        <property name="messageText" type="string">
+            <column name="MESSAGE_TEXT" />
+        </property>
+        <set name="messageses" inverse="true">
+            <key>
+                <column name="NEXT_MESSAGE_ID" />
+            </key>
+            <one-to-many class="org.t0tec.tutorials.helloworld.Messages" />
+        </set>
+    </class>
+</hibernate-mapping>
