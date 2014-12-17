@@ -1,10 +1,12 @@
 package org.t0tec.tutorials.helloworld;
 
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.stat.EntityStatistics;
+import org.hibernate.stat.Statistics;
 import org.t0tec.tutorials.persistence.HibernateUtil;
 
 public class HelloWorld {
@@ -17,6 +19,8 @@ public class HelloWorld {
 
 		thirdUnitOfWork();
 		
+		fourthUnitOfWork();
+		
 		// Shutting down the application
 		HibernateUtil.shutdown();
 	}
@@ -28,7 +32,7 @@ public class HelloWorld {
 		
 		Message message = new Message("Hello World");
 		msgId = (Long) session.save(message);
-		
+				
 		tx.commit();
 		session.close();
 	}
@@ -64,5 +68,36 @@ public class HelloWorld {
 		
 		thirdTransaction.commit();
 		thirdSession.close();
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private static void fourthUnitOfWork() {
+		// Fourth unit of work
+		Session fourthSession = HibernateUtil.getSessionFactory().openSession();
+		Transaction fourthTransaction = fourthSession.beginTransaction();
+		
+		Statistics stats = HibernateUtil.getSessionFactory().getStatistics();
+		stats.setStatisticsEnabled(true);
+		
+		List messages = fourthSession.createQuery("from Message m order by m.text asc").list();
+		
+		System.out.println(messages.size() + " message(s) found:");
+
+		for (Iterator iter = messages.iterator(); iter.hasNext();) {
+			Message loadedMsg = (Message) iter.next();
+			System.out.println(loadedMsg.getText());
+		}
+		
+		System.out.println("entity count: " + fourthSession.getStatistics().getEntityCount());
+		
+		stats.getSessionOpenCount();
+		stats.logSummary();
+		EntityStatistics messageStats = stats.getEntityStatistics("org.t0tec.tutorials.helloworld.Message");
+		
+		System.out.println("fetch count: " + messageStats.getFetchCount());
+		System.out.println("load count: " + messageStats.getLoadCount());
+		
+		fourthTransaction.commit();
+		fourthSession.close();
 	}
 }

@@ -2,8 +2,6 @@ package org.t0tec.tutorials.persistence;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.stat.EntityStatistics;
-import org.hibernate.stat.Statistics;
 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
@@ -24,15 +22,5 @@ public class HibernateUtil {
 	public static void shutdown() {
 		// Close caches and connection pools
 		getSessionFactory().close();
-	}
-
-	public static void getMessageStats() { // or use hibernate.generate_statistics = true in config
-		Statistics stats = HibernateUtil.getSessionFactory().getStatistics();
-		stats.setStatisticsEnabled(true);
-		// ...
-		stats.getSessionOpenCount();
-		stats.logSummary();
-		EntityStatistics messageStats = stats.getEntityStatistics("org.t0tec.tutorials.Message");
-		messageStats.getFetchCount();
 	}
 }
