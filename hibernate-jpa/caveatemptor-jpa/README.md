@@ -1,4 +1,4 @@
-# CaveatEmptor Native (20061211)
+# CaveatEmptor JPA (20061211)
 
 
 ## Requirements
