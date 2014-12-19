@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.model;
+package org.t0tec.tutorials.tpcp;
 
 public enum CreditCardType {
 	MASTERCARD("Mastercard"),

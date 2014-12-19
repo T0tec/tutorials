@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.model;
+package org.t0tec.tutorials.tpcp;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.t0tec.tutorials.helloworld.persistence.HibernateUtil;
+import org.t0tec.tutorials.tpcp.persistence.HibernateUtil;
 
 public class TablePerClass {
 

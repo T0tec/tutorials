@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.model;
+package org.t0tec.tutorials.tpcp;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
@@ -67,6 +67,6 @@ public class BankAccount extends BillingDetails {
 
 	@Override
 	public String toString() {
-		return "CreditCard{" + "id=" + id + ", number=" + number + ", bank=" + bankname + '}';
+		return "BankAccount{" + "id=" + id + ", number=" + number + ", bank=" + bankname + '}';
 	}
 }

@@ -1,11 +1,11 @@
-package org.t0tec.tutorials.helloworld;
+package org.t0tec.tutorials.tpcp;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.t0tec.tutorials.model.TablePerClass;
+import org.t0tec.tutorials.tpcp.TablePerClass;
 
 public class TablePerClassTest {
 

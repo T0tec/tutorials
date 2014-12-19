@@ -1,19 +1,12 @@
-package org.t0tec.tutorials.model;
+package org.t0tec.tutorials.tpcu;
 
-import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@AttributeOverride(name = "owner", column =
-	@Column(name = "CC_OWNER", nullable = false)
-)
+@Table(name = "CREDIT_CARD")
 public class CreditCard extends BillingDetails {
-	@Id @GeneratedValue
-	@Column(name = "CREDIT_CARD_ID")
-	private Long id;
 	@Column(name = "NUMBER", nullable = false)
 	private String number;
 	@Column(name = "TYPE", nullable = false)
@@ -35,16 +28,6 @@ public class CreditCard extends BillingDetails {
 		this.expYear = expYear;
 	}
 	
-	public Long getId() {
-		return id;
-	}
-
-	@SuppressWarnings("unused")
-	private void setId(Long id) {
-		this.id = id;
-	}
-
-
 	public CreditCardType getType() {
 		return type;
 	}
@@ -83,6 +66,6 @@ public class CreditCard extends BillingDetails {
 
 	@Override
 	public String toString() {
-		return "CreditCard{" + "id=" + id + ", number=" + number + ", type=" + type.toString() + '}';
+		return "CreditCard{" + "id=" + super.getId() + ", number=" + number + ", type=" + type.toString() + '}';
 	}
 }

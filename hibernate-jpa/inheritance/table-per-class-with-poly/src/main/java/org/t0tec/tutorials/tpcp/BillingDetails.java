@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.model;
+package org.t0tec.tutorials.tpcp;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
