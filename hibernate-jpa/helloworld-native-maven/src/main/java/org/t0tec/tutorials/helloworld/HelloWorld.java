@@ -51,8 +51,7 @@ public class HelloWorld {
         Session newSession = HibernateUtil.getSessionFactory().openSession();
         Transaction newTransaction = newSession.beginTransaction();
         
-        List<Message> list = listAndCast(newSession.createQuery("from Message m order by m.text asc"));
-		List<Message> messages = list;
+		List<Message> messages = listAndCast(newSession.createQuery("from Message m order by m.text asc"));
         logger.debug("{} message(s) found", messages.size());
         for (Message msg : messages) {
             logger.debug(msg.toString());
