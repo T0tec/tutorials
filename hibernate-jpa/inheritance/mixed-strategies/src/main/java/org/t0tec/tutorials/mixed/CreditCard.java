@@ -13,13 +13,21 @@ import javax.persistence.SecondaryTable;
 	pkJoinColumns = @PrimaryKeyJoinColumn(name = "CREDIT_CARD_ID")
 )
 public class CreditCard extends BillingDetails {
-	@Column(name = "CC_NUMBER")
+	@Column(table = "CREDIT_CARD",
+	        name = "CC_NUMBER",
+	        nullable = false)
 	private String number;
-	@Column(name = "CC_TYPE")
+	@Column(table = "CREDIT_CARD",
+	        name = "CC_TYPE",
+	        nullable = false)
 	private CreditCardType type;
-	@Column(name = "CC_EXP_MONTH")
+	@Column(table = "CREDIT_CARD",
+	        name = "CC_EXP_MONTH",
+	        nullable = false)
 	private String expMonth;
-	@Column(name = "CC_EXP_YEAR")
+	@Column(table = "CREDIT_CARD",
+	        name = "CC_EXP_YEAR",
+	        nullable = false)
 	private String expYear;
 	
 	public CreditCard() {
