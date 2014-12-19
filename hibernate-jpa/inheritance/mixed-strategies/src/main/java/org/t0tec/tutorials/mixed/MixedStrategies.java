@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.tpch;
+package org.t0tec.tutorials.mixed;
 
 import java.util.List;
 
@@ -8,15 +8,15 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.t0tec.tutorials.tpch.persistence.HibernateUtil;
+import org.t0tec.tutorials.mixed.persistence.HibernateUtil;
 
-public class TablePerClassHierarchie {
+public class MixedStrategies {
 
-    private static final Logger logger = LoggerFactory.getLogger(TablePerClassHierarchie.class);
+    private static final Logger logger = LoggerFactory.getLogger(MixedStrategies.class);
 
     public static void main(String[] args) {
-        TablePerClassHierarchie tpch = new TablePerClassHierarchie();
-        tpch.doWork();
+        MixedStrategies mix = new MixedStrategies();
+        mix.doWork();
     }
 
     public void doWork() {
@@ -84,7 +84,7 @@ public class TablePerClassHierarchie {
         List<BillingDetails> billingDetails = listAndCast(newSession.createQuery("from BillingDetails bd where bd.owner=:owner order by bd.number asc").setParameter("owner", "John Doe"));
         logger.debug("{} billing detail(s) found", billingDetails.size());
         for (BillingDetails bd : billingDetails) {
-            logger.debug(bd.getDiscriminatorValue() + " - " + bd.toString());
+            logger.debug(bd.toString());
         }
         
         newTransaction.commit();

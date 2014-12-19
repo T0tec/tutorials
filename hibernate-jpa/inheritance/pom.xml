@@ -186,5 +186,7 @@
 		<module>table-per-class-with-poly</module>
     <module>table-per-class-with-union</module>
     <module>table-per-class-hierarchie</module>
+    <module>table-per-subclass</module>
+    <module>mixed-strategies</module>
   </modules>
 </project>

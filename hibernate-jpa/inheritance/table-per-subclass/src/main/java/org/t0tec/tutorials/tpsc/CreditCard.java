@@ -1,19 +1,19 @@
-package org.t0tec.tutorials.tpch;
+package org.t0tec.tutorials.tpsc;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@DiscriminatorValue("CC")
+@PrimaryKeyJoinColumn(name = "CREDIT_CARD_ID")
 public class CreditCard extends BillingDetails {
-	@Column(name = "CC_NUMBER")
+	@Column(name = "NUMBER")
 	private String number;
-	@Column(name = "CC_TYPE")
+	@Column(name = "TYPE")
 	private CreditCardType type;
-	@Column(name = "CC_EXP_MONTH")
+	@Column(name = "EXP_MONTH")
 	private String expMonth;
-	@Column(name = "CC_EXP_YEAR")
+	@Column(name = "EXP_YEAR")
 	private String expYear;
 	
 	public CreditCard() {
