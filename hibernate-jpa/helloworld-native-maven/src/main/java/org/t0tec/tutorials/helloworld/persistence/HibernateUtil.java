@@ -21,4 +21,9 @@ public class HibernateUtil {
         // Alternatively, you could look up in JNDI here
         return sessionFactory;
     }
+    
+	public static void shutdown() {
+		// Close caches and connection pools
+		getSessionFactory().close();
+	}
 }

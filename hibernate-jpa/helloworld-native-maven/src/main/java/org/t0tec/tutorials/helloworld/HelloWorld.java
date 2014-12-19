@@ -28,23 +28,23 @@ public class HelloWorld {
         tx.commit();
         session.close();
 
-        // Second unit of work
+        // second unit of work
         getAllMessages();
 
         // Third unit of work
         Session thirdSession = HibernateUtil.getSessionFactory().openSession();
         Transaction thirdTransaction = thirdSession.beginTransaction();
         message = (Message) thirdSession.get(Message.class, helloWorldMessageId);
-        message.setText("Ciao, come stai?");
-        message.setNextMessage(new Message("Sto bene, grazie."));
+        message.setText("Greetings Earthling");
+        message.setNextMessage(new Message("Take me to your leader (please)"));
         thirdTransaction.commit();
         thirdSession.close();
 
-        // forth unit of work
+        // Fourth unit of work
         getAllMessages();
 
         // Shutting down the application
-        HibernateUtil.getSessionFactory().close();
+        HibernateUtil.shutdown();
     }
 
     private void getAllMessages() throws HibernateException {

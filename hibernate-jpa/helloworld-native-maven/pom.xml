@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.t0tec.tutorials</groupId>
-    <artifactId>helloworld</artifactId>
+    <artifactId>helloworld-native-maven</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
