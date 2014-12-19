@@ -23,7 +23,7 @@ public class TablePerClass {
         // First unit of work
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        BankAccount bankAccount = new BankAccount("John Doe", "123-1234567-01", "Nil Percent Bank Inc.", "2015");
+        BankAccount bankAccount = new BankAccount("John Doe", "Savings account", "Nil Percent Bank Inc.", "2015");
         Long bankAccountId = (Long) session.save(bankAccount);
         tx.commit();
         session.close();
@@ -61,7 +61,7 @@ public class TablePerClass {
         Session newSession = HibernateUtil.getSessionFactory().openSession();
         Transaction newTransaction = newSession.beginTransaction();
         
-        List<BankAccount> accounts = listAndCast(newSession.createQuery("from BankAccount m order by m.number asc"));
+        List<BankAccount> accounts = listAndCast(newSession.createQuery("from BankAccount ba order by ba.account asc"));
         logger.debug("{} bank account(s) found", accounts.size());
         for (BankAccount bankAccount : accounts) {
             logger.debug(bankAccount.toString());
@@ -75,7 +75,7 @@ public class TablePerClass {
         Session newSession = HibernateUtil.getSessionFactory().openSession();
         Transaction newTransaction = newSession.beginTransaction();
         
-        List<CreditCard> creditcards = listAndCast(newSession.createQuery("from CreditCard c order by c.number asc"));
+        List<CreditCard> creditcards = listAndCast(newSession.createQuery("from CreditCard cc order by cc.number asc"));
         logger.debug("{} credit card(s) found", creditcards.size());
         for (CreditCard creditCard : creditcards) {
             logger.debug(creditCard.toString());

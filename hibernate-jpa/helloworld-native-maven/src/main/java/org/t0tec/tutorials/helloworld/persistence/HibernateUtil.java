@@ -9,8 +9,7 @@ public class HibernateUtil {
 
     static {
         try {
-            Configuration configuration = new Configuration().configure();
-            
+            Configuration configuration = new Configuration().configure();          
             sessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);

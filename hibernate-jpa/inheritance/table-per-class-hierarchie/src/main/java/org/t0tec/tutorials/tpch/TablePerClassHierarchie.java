@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.tpcu;
+package org.t0tec.tutorials.tpch;
 
 import java.util.List;
 
@@ -8,14 +8,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.t0tec.tutorials.tpcu.persistence.HibernateUtil;
+import org.t0tec.tutorials.tpch.persistence.HibernateUtil;
 
-public class TablePerClass {
+public class TablePerClassHierarchie {
 
-    private static final Logger logger = LoggerFactory.getLogger(TablePerClass.class);
+    private static final Logger logger = LoggerFactory.getLogger(TablePerClassHierarchie.class);
 
     public static void main(String[] args) {
-        TablePerClass tpc = new TablePerClass();
+        TablePerClassHierarchie tpc = new TablePerClassHierarchie();
         tpc.doWork();
     }
 
@@ -30,11 +30,8 @@ public class TablePerClass {
 
         // Second unit of work
         getAllBankAccounts();
-
-        // Third unit of work
-        getAllBankAccounts();
         
-        // Fourth unit of work
+        // Third unit of work
         Session fourthSession = HibernateUtil.getSessionFactory().openSession();
         Transaction fourthTransaction = fourthSession.beginTransaction();
         CreditCard creditCard = new CreditCard("John Doe", "9876-1234-5678-0009", CreditCardType.MASTERCARD, "10", "2015");
@@ -42,10 +39,10 @@ public class TablePerClass {
         fourthTransaction.commit();
         fourthSession.close();
         
-        // Fifth unit of work
+        // Fourth unit of work
         getAllCreditCards();
         
-        // Sixth unit of work
+        // Fifth unit of work
         getAllBillingDetails();
             
         // Shutting down the application
@@ -87,7 +84,7 @@ public class TablePerClass {
         List<BillingDetails> billingDetails = listAndCast(newSession.createQuery("from BillingDetails bd where bd.owner=:owner order by bd.number asc").setParameter("owner", "John Doe"));
         logger.debug("{} billing detail(s) found", billingDetails.size());
         for (BillingDetails bd : billingDetails) {
-            logger.debug(bd.toString());
+            logger.debug(bd.getDiscriminatorValue() + " - " + bd.toString());
         }
         
         newTransaction.commit();

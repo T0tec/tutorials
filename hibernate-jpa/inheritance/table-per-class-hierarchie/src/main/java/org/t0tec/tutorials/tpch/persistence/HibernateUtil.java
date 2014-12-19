@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.tpcp.persistence;
+package org.t0tec.tutorials.tpch.persistence;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

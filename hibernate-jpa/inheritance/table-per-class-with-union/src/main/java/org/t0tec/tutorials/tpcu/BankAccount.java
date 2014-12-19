@@ -7,8 +7,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "BANK_ACCOUNT")
 public class BankAccount extends BillingDetails {
-	@Column(name = "NUMBER", nullable = false)
-	private String number;
+	@Column(name = "ACCOUNT", nullable = false)
+	private String account;
 	@Column(name = "BANKNAME", nullable = false)
 	private String bankname;
 	@Column(name = "SWIFT", nullable = false)
@@ -18,19 +18,19 @@ public class BankAccount extends BillingDetails {
 		super();
 	}
 	
-	public BankAccount(String owner, String number, String bankname, String swift) {
+	public BankAccount(String owner, String account, String bankname, String swift) {
 		super(owner);
-		this.number = number;
+		this.account = account;
 		this.bankname = bankname;
 		this.swift = swift;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getAccount() {
+		return account;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setAccount(String account) {
+		this.account = account;
 	}
 
 	public String getBankname() {
@@ -51,6 +51,6 @@ public class BankAccount extends BillingDetails {
 
 	@Override
 	public String toString() {
-		return "BankAccount{" + "id=" + super.getId() + ", number=" + number + ", bank=" + bankname + '}';
+		return "BankAccount{" + "id=" + super.getId() + ", number=" + account + ", bank=" + bankname + '}';
 	}
 }

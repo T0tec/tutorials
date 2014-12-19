@@ -1,24 +1,17 @@
-package org.t0tec.tutorials.tpcp;
+package org.t0tec.tutorials.tpch;
 
-import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 @Entity
-@AttributeOverride(name = "owner", column =
-	@Column(name = "BA_OWNER", nullable = false)
-)
+@DiscriminatorValue("BA")
 public class BankAccount extends BillingDetails {
-	@Id @GeneratedValue
-	@Column(name = "BANK_ACCOUNT_ID")
-	private Long id;
-	@Column(name = "ACOUNT", nullable = false)
+	@Column(name = "BA_ACCOUNT")
 	private String account;
-	@Column(name = "BANKNAME", nullable = false)
+	@Column(name = "BA_BANKNAME")
 	private String bankname;
-	@Column(name = "SWIFT", nullable = false)
+	@Column(name = "BA_SWIFT")
 	private String swift;
 	
 	public BankAccount() {
@@ -30,15 +23,6 @@ public class BankAccount extends BillingDetails {
 		this.account = account;
 		this.bankname = bankname;
 		this.swift = swift;
-	}
-	
-	public Long getId() {
-		return id;
-	}
-
-	@SuppressWarnings("unused")
-	private void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getAccount() {
@@ -67,6 +51,6 @@ public class BankAccount extends BillingDetails {
 
 	@Override
 	public String toString() {
-		return "BankAccount{" + "id=" + id + ", account=" + account + ", bank=" + bankname + '}';
+		return "BankAccount{" + "id=" + super.getId() + ", account=" + account + ", bank=" + bankname + '}';
 	}
 }

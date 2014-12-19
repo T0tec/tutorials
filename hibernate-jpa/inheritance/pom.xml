@@ -131,7 +131,7 @@
 										<path location="${project.build.directory}/classes"/>
 									</classpath>
 									<configuration configurationfile="${project.build.directory}/classes/hibernate.cfg.xml"/>
-									<hbm2ddl export="true" drop="true" create="true" outputfilename="helloworld.ddl" format="true"/>
+									<hbm2ddl export="true" drop="true" create="true" outputfilename="test.ddl" format="true"/>
 								</hibernatetool>
 
 								<echo message="Ant target, through maven-antrun-plugin, terminated"/>
@@ -185,5 +185,6 @@
 	<modules>
 		<module>table-per-class-with-poly</module>
     <module>table-per-class-with-union</module>
+    <module>table-per-class-hierarchie</module>
   </modules>
 </project>

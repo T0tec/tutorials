@@ -5,7 +5,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.t0tec.tutorials.helloworld.HelloWorld;
+import org.junit.Test;
 
 public class HelloWorldTest {
 
@@ -21,7 +21,7 @@ public class HelloWorldTest {
     @After
     public void tearDown() {}
 
-    @org.junit.Test
+    @Test
     public void testSayHello() {
         HelloWorld instance = new HelloWorld();
         instance.sayHello();
