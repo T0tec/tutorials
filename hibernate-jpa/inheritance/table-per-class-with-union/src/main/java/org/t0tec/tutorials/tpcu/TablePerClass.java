@@ -35,12 +35,12 @@ public class TablePerClass {
         getAllBankAccounts();
         
         // Fourth unit of work
-        Session fourthSession = HibernateUtil.getSessionFactory().openSession();
-        Transaction fourthTransaction = fourthSession.beginTransaction();
+        Session secondSession = HibernateUtil.getSessionFactory().openSession();
+        Transaction secondTransaction = secondSession.beginTransaction();
         CreditCard creditCard = new CreditCard("John Doe", "9876-1234-5678-0009", CreditCardType.MASTERCARD, "10", "2015");
-        fourthSession.save(creditCard);
-        fourthTransaction.commit();
-        fourthSession.close();
+        secondSession.save(creditCard);
+        secondTransaction.commit();
+        secondSession.close();
         
         // Fifth unit of work
         getAllCreditCards();

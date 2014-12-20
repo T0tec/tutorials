@@ -32,23 +32,23 @@ public class TablePerClass {
         getAllBankAccounts();
 
         // Third unit of work
-        Session thirdSession = HibernateUtil.getSessionFactory().openSession();
-        Transaction thirdTransaction = thirdSession.beginTransaction();
-        bankAccount = (BankAccount) thirdSession.get(BankAccount.class, bankAccountId);
+        Session secondSession = HibernateUtil.getSessionFactory().openSession();
+        Transaction secondTransaction = secondSession.beginTransaction();
+        bankAccount = (BankAccount) secondSession.get(BankAccount.class, bankAccountId);
         bankAccount.setOwnername("John Doe & Sharon Doe");
-        thirdTransaction.commit();
-        thirdSession.close();
+        secondTransaction.commit();
+        secondSession.close();
 
         // Fourth unit of work
         getAllBankAccounts();
         
         // Fifth unit of work
-        Session fourthSession = HibernateUtil.getSessionFactory().openSession();
-        Transaction fourthTransaction = fourthSession.beginTransaction();
+        Session thirdSession = HibernateUtil.getSessionFactory().openSession();
+        Transaction thirdTransaction = thirdSession.beginTransaction();
         CreditCard creditCard = new CreditCard("John Doe", "9876-1234-5678-0009", CreditCardType.MASTERCARD, "10", "2015");
-        fourthSession.save(creditCard);
-        fourthTransaction.commit();
-        fourthSession.close();
+        thirdSession.save(creditCard);
+        thirdTransaction.commit();
+        thirdSession.close();
         
         // fifth unit of work
         getAllCreditCards();
