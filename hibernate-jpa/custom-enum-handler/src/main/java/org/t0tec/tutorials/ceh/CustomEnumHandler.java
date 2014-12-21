@@ -26,7 +26,6 @@ public class CustomEnumHandler {
         // First unit of work
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-       
         
         Comment badComment = new Comment(Rating.BAD, "This isn't a good product!!!");
         Comment okComment = new Comment(Rating.OK, "This is a good product!");
@@ -64,6 +63,7 @@ public class CustomEnumHandler {
 		Properties params = new Properties();
 		params.put("enumClassname", "org.t0tec.tutorials.ceh.Rating");
 		q.setParameter("rating", Rating.OK, Hibernate.custom(StringEnumUserType.class, params));
+		
         
 		List<Comment> okComments = listAndCast(q);
         for (Comment comment : okComments) {

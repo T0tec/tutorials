@@ -61,7 +61,7 @@ public class Comment implements Serializable {
 	}
 
 	public String toString() {
-		return "Comment{'" + getId() + "'}, " + "Rating: '" + getRating() + "',  text: " + text;
+		return "Comment{" + getId() + "}, " + "Rating: " + getRating() + ",  text: " + getText();
 	}
 
 }

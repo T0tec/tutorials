@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SS} [%thread] %-5level %logger{10} - [%file:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="ERROR">
+        <appender-ref ref="STDOUT" />
+    </root>
+    <logger name="org.t0tec.tutorials" level="DEBUG" />
+    <logger name="org.hibernate" level="INFO" />
+</configuration>
