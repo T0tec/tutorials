@@ -25,5 +25,8 @@
         <mapping class="org.t0tec.tutorials.mc.ItemC" />
         <mapping class="org.t0tec.tutorials.mc.ItemL" />
         <mapping class="org.t0tec.tutorials.mc.ItemM" />
+        <mapping class="org.t0tec.tutorials.mc.ItemSM" />
+        <mapping class="org.t0tec.tutorials.mc.ItemSS" />
+        <mapping class="org.t0tec.tutorials.mc.ItemLHM" />
     </session-factory>
 </hibernate-configuration>

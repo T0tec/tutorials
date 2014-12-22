@@ -1,9 +1,10 @@
 package org.t0tec.tutorials.mc;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,24 +12,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Sort;
+import org.hibernate.annotations.SortType;
+
 @Entity
-@Table(name = "ITEM_S")
-public class ItemS {
+@Table(name = "ITEM_SS")
+public class ItemSS {
   @Id
   @GeneratedValue
-  @Column(name = "ITEM_S_ID")
+  @Column(name = "ITEM_SS_ID")
   private Long Id;
   @Column(name = "NAME", nullable = false)
   private String name;
 
-  @org.hibernate.annotations.CollectionOfElements(targetElement = java.lang.String.class)
-  @JoinTable(name = "ITEM_S_IMAGE", joinColumns = @JoinColumn(name = "ITEM_S_ID"))
+  @ElementCollection(targetClass = java.lang.String.class)
+  @JoinTable(name = "ITEM_SS_IMAGE", joinColumns = @JoinColumn(name = "ITEM_SS_ID"))
   @Column(name = "FILENAME", nullable = false)
-  private Set<String> images = new HashSet<String>();
+  @Sort(type = SortType.NATURAL)
+  // Or use custom Comparator
+  private SortedSet<String> images = new TreeSet<String>();
 
-  public ItemS() {}
+  public ItemSS() {}
 
-  public ItemS(String name) {
+  public ItemSS(String name) {
     this.name = name;
   }
 
@@ -44,18 +50,18 @@ public class ItemS {
     this.name = name;
   }
 
-  public Set<String> getImages() {
+  public SortedSet<String> getImages() {
     return this.images;
   }
 
-  public void setImages(Set<String> images) {
+  public void setImages(SortedSet<String> images) {
     this.images = images;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("ItemS{" + getId() + "}, " + "name: " + getName() + ",  images size: "
+    sb.append("ItemSS{" + getId() + "}, " + "name: " + getName() + ",  images size: "
         + getImages().size() + " ");
 
     sb.append("filenames: {");

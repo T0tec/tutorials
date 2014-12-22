@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class ItemC {
   @Column(name = "NAME", nullable = false)
   private String name;
 
-  @org.hibernate.annotations.CollectionOfElements(targetElement = java.lang.String.class)
+  @ElementCollection(targetClass = java.lang.String.class)
   @JoinTable(name = "ITEM_C_IMAGE", joinColumns = @JoinColumn(name = "ITEM_C_ID"))
   @Column(name = "FILENAME")
   @CollectionId(columns = @Column(name = "ITEM_IMAGE_ID"), type = @Type(type = "long"),
