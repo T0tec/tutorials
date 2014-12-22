@@ -9,22 +9,22 @@ import org.junit.Test;
 
 public class HelloWorldTest {
 
-    @BeforeClass
-    public static void setUpClass() {}
+  @BeforeClass
+  public static void setUpClass() {}
 
-    @AfterClass
-    public static void tearDownClass() {}
+  @AfterClass
+  public static void tearDownClass() {}
 
-    @Before
-    public void setUp() {}
+  @Before
+  public void setUp() {}
 
-    @After
-    public void tearDown() {}
+  @After
+  public void tearDown() {}
 
-    @Test
-    public void testSayHello() {
-        HelloWorld instance = new HelloWorld();
-        instance.sayHello();
-        Assert.assertTrue(true);
-    }
+  @Test
+  public void testSayHello() {
+    HelloWorld instance = new HelloWorld();
+    instance.sayHello();
+    Assert.assertTrue(true);
+  }
 }

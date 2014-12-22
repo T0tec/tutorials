@@ -17,51 +17,51 @@ import javax.persistence.TemporalType;
 @Table(name = "COMMENT")
 public class Comment implements Serializable {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "COMMENT_ID")
-	private Long id = null;
+  @Id
+  @GeneratedValue
+  @Column(name = "COMMENT_ID")
+  private Long id = null;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "RATING", nullable = false, updatable = false)
-	private Rating rating;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "RATING", nullable = false, updatable = false)
+  private Rating rating;
 
-	@Column(name = "COMMENT_TEXT", length = 4000, nullable = true)
-	private String text;
+  @Column(name = "COMMENT_TEXT", length = 4000, nullable = true)
+  private String text;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "CREATED", nullable = false, updatable = false)
-	private Date created = new Date();
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "CREATED", nullable = false, updatable = false)
+  private Date created = new Date();
 
-	public Comment() {}
+  public Comment() {}
 
-	public Comment(Rating rating, String text) {
-		this.rating = rating;
-		this.text = text;
-	}
+  public Comment(Rating rating, String text) {
+    this.rating = rating;
+    this.text = text;
+  }
 
-	public Long getId() {
-		return id;
-	}
-	
-	public Rating getRating() {
-		return rating;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public String getText() {
-		return text;
-	}
+  public Rating getRating() {
+    return rating;
+  }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+  public String getText() {
+    return text;
+  }
 
-	public Date getCreated() {
-		return created;
-	}
+  public void setText(String text) {
+    this.text = text;
+  }
 
-	public String toString() {
-		return "Comment{" + getId() + "}, " + "Rating: " + getRating() + ",  text: " + getText();
-	}
+  public Date getCreated() {
+    return created;
+  }
+
+  public String toString() {
+    return "Comment{" + getId() + "}, " + "Rating: " + getRating() + ",  text: " + getText();
+  }
 
 }

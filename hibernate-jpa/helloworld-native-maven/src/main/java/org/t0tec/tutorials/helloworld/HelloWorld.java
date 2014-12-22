@@ -12,56 +12,57 @@ import org.t0tec.tutorials.helloworld.persistence.HibernateUtil;
 
 public class HelloWorld {
 
-    private static final Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+  private static final Logger logger = LoggerFactory.getLogger(HelloWorld.class);
 
-    public static void main(String[] args) {
-        HelloWorld helloWorld = new HelloWorld();
-        helloWorld.sayHello();
+  public static void main(String[] args) {
+    HelloWorld helloWorld = new HelloWorld();
+    helloWorld.sayHello();
+  }
+
+  public void sayHello() {
+    // First unit of work
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction tx = session.beginTransaction();
+    Message message = new Message("Hello World");
+    Long helloWorldMessageId = (Long) session.save(message);
+    tx.commit();
+    session.close();
+
+    // second unit of work
+    getAllMessages();
+
+    // Third unit of work
+    Session thirdSession = HibernateUtil.getSessionFactory().openSession();
+    Transaction thirdTransaction = thirdSession.beginTransaction();
+    message = (Message) thirdSession.get(Message.class, helloWorldMessageId);
+    message.setText("Greetings Earthling");
+    message.setNextMessage(new Message("Take me to your leader (please)"));
+    thirdTransaction.commit();
+    thirdSession.close();
+
+    // Fourth unit of work
+    getAllMessages();
+
+    // Shutting down the application
+    HibernateUtil.shutdown();
+  }
+
+  private void getAllMessages() throws HibernateException {
+    Session newSession = HibernateUtil.getSessionFactory().openSession();
+    Transaction newTransaction = newSession.beginTransaction();
+
+    List<Message> messages =
+        listAndCast(newSession.createQuery("from Message m order by m.text asc"));
+    logger.debug("{} message(s) found", messages.size());
+    for (Message msg : messages) {
+      logger.debug(msg.toString());
     }
+    newTransaction.commit();
+    newSession.close();
+  }
 
-    public void sayHello() {
-        // First unit of work
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Message message = new Message("Hello World");
-        Long helloWorldMessageId = (Long) session.save(message);
-        tx.commit();
-        session.close();
-
-        // second unit of work
-        getAllMessages();
-
-        // Third unit of work
-        Session thirdSession = HibernateUtil.getSessionFactory().openSession();
-        Transaction thirdTransaction = thirdSession.beginTransaction();
-        message = (Message) thirdSession.get(Message.class, helloWorldMessageId);
-        message.setText("Greetings Earthling");
-        message.setNextMessage(new Message("Take me to your leader (please)"));
-        thirdTransaction.commit();
-        thirdSession.close();
-
-        // Fourth unit of work
-        getAllMessages();
-
-        // Shutting down the application
-        HibernateUtil.shutdown();
-    }
-
-    private void getAllMessages() throws HibernateException {
-        Session newSession = HibernateUtil.getSessionFactory().openSession();
-        Transaction newTransaction = newSession.beginTransaction();
-        
-		List<Message> messages = listAndCast(newSession.createQuery("from Message m order by m.text asc"));
-        logger.debug("{} message(s) found", messages.size());
-        for (Message msg : messages) {
-            logger.debug(msg.toString());
-        }
-        newTransaction.commit();
-        newSession.close();
-    }
-    
-    @SuppressWarnings({ "unchecked" })
-	public static <T> List<T> listAndCast(Query q) {
-        return q.list();
-    }
+  @SuppressWarnings({"unchecked"})
+  public static <T> List<T> listAndCast(Query q) {
+    return q.list();
+  }
 }

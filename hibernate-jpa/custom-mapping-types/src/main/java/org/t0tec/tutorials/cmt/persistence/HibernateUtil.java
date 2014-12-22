@@ -5,24 +5,24 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
-    private static SessionFactory sessionFactory;
+  private static SessionFactory sessionFactory;
 
-    static {
-        try {
-            Configuration configuration = new Configuration().configure(); // .addPackag("org.t0tec.tutorials.cmt.persistence")            
-            sessionFactory = configuration.buildSessionFactory();
-        } catch (Throwable ex) {
-            throw new ExceptionInInitializerError(ex);
-        }
+  static {
+    try {
+      Configuration configuration = new Configuration().configure(); // .addPackag("org.t0tec.tutorials.cmt.persistence")
+      sessionFactory = configuration.buildSessionFactory();
+    } catch (Throwable ex) {
+      throw new ExceptionInInitializerError(ex);
     }
+  }
 
-    public static SessionFactory getSessionFactory() {
-        // Alternatively, you could look up in JNDI here
-        return sessionFactory;
-    }
-    
-	public static void shutdown() {
-		// Close caches and connection pools
-		getSessionFactory().close();
-	}
+  public static SessionFactory getSessionFactory() {
+    // Alternatively, you could look up in JNDI here
+    return sessionFactory;
+  }
+
+  public static void shutdown() {
+    // Close caches and connection pools
+    getSessionFactory().close();
+  }
 }

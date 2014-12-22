@@ -4,56 +4,56 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Item {
-	private String name;
-	private String description;
-	private BigDecimal initialPrice;
-	private BigDecimal reservePrice;
-	private Date startDate;
-	private Date endDate;
-	private ItemState state;
-	private Date approvalDatetime;
-	
-	public Item() {}
-	
-	public String getName() {
-		return name;
-	}
+  private String name;
+  private String description;
+  private BigDecimal initialPrice;
+  private BigDecimal reservePrice;
+  private Date startDate;
+  private Date endDate;
+  private ItemState state;
+  private Date approvalDatetime;
 
-	public String getDescription() {
-		return description;
-	}
+  public Item() {}
 
-	public BigDecimal getInitialPrice() {
-		return initialPrice;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public BigDecimal getReservePrice() {
-		return reservePrice;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public Date getStartDate() {
-		return startDate;
-	}
+  public BigDecimal getInitialPrice() {
+    return initialPrice;
+  }
 
-	public Date getEndDate() {
-		return endDate;
-	}
+  public BigDecimal getReservePrice() {
+    return reservePrice;
+  }
 
-	public ItemState getState() {
-		return state;
-	}
+  public Date getStartDate() {
+    return startDate;
+  }
 
-	public Date getApprovalDatetime() {
-		return approvalDatetime;
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		return false;	
-	}
-	
-	@Override
-	public String toString() {
-		return null;
-	}
+  public Date getEndDate() {
+    return endDate;
+  }
+
+  public ItemState getState() {
+    return state;
+  }
+
+  public Date getApprovalDatetime() {
+    return approvalDatetime;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    return null;
+  }
 }

@@ -1,49 +1,49 @@
 package org.t0tec.tutorials.auction.model;
 
 public class User {
-	private String firstname;
-	private String lastname;
-	private String username;
-	private String password;
-	private String email;
-	private int ranking;
-	private boolean admin;
-	
-	public String getFirstname() {
-		return firstname;
-	}
-	
-	public String getLastname() {
-		return lastname;
-	}
+  private String firstname;
+  private String lastname;
+  private String username;
+  private String password;
+  private String email;
+  private int ranking;
+  private boolean admin;
 
-	public String getUsername() {
-		return username;
-	}
+  public String getFirstname() {
+    return firstname;
+  }
 
-	public String getPassword() {
-		return password;
-	}
+  public String getLastname() {
+    return lastname;
+  }
 
-	public String getEmail() {
-		return email;
-	}
+  public String getUsername() {
+    return username;
+  }
 
-	public int getRanking() {
-		return ranking;
-	}
+  public String getPassword() {
+    return password;
+  }
 
-	public boolean isAdmin() {
-		return admin;
-	}
+  public String getEmail() {
+    return email;
+  }
 
-	@Override
-	public boolean equals(Object o) {
-		return false;	
-	}
-	
-	@Override
-	public String toString() {
-		return null;
-	}
+  public int getRanking() {
+    return ranking;
+  }
+
+  public boolean isAdmin() {
+    return admin;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    return null;
+  }
 }
