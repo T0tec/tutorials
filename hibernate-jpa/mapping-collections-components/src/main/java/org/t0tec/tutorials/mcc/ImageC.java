@@ -14,13 +14,13 @@ public class ImageC {
   @Column(length = 255, nullable = false)
   private String filename;
   @Column
-  private int sizeX;
+  private Integer sizeX;
   @Column
-  private int sizeY;
+  private Integer sizeY;
 
   public ImageC() {}
 
-  public ImageC(String name, String filename, int sizeX, int sizeY) {
+  public ImageC(String name, String filename, Integer sizeX, Integer sizeY) {
     this.name = name;
     this.filename = filename;
     this.sizeX = sizeX;
@@ -51,19 +51,19 @@ public class ImageC {
     this.filename = filename;
   }
 
-  public int getSizeX() {
+  public Integer getSizeX() {
     return sizeX;
   }
 
-  public void setSizeX(int sizeX) {
+  public void setSizeX(Integer sizeX) {
     this.sizeX = sizeX;
   }
 
-  public int getSizeY() {
+  public Integer getSizeY() {
     return sizeY;
   }
 
-  public void setSizeY(int sizeY) {
+  public void setSizeY(Integer sizeY) {
     this.sizeY = sizeY;
   }
 

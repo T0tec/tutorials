@@ -60,7 +60,7 @@ public class ItemC {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("Item{" + getId() + "}, " + "name: " + getName() + ",  images size: "
+    sb.append("ItemC{" + getId() + "}, " + "name: " + getName() + ",  images size: "
         + getImages().size() + ", ");
 
     sb.append("filenames: {");

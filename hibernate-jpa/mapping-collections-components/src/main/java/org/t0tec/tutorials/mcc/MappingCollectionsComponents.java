@@ -24,7 +24,8 @@ public class MappingCollectionsComponents {
   }
 
   public void doFirstUnit() {
-    // First unit of work: Item with a set of images that doesn't allow null values
+    // First unit of work: Item with a set of images that doesn't allow null values & duplicate
+    // Images
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction tx = session.beginTransaction();
 
@@ -33,6 +34,7 @@ public class MappingCollectionsComponents {
     images.add(new ImageS("Foo Image 1", "foo1.png", 125, 125));
     images.add(new ImageS("Foo Image 2", "foo2.png", 400, 200));
     images.add(new ImageS("Foo Image 3", "foo3.png", 50, 50));
+    images.add(new ImageS("Foo Image 3", "foo3.png", 50, 50)); // no duplicates allowed
 
     item.setImages(images);
 
@@ -56,7 +58,8 @@ public class MappingCollectionsComponents {
       logger.debug(item.toString());
       if (!item.getImages().isEmpty()) {
         for (ImageS i : item.getImages()) {
-          logger.debug("{}, parent: {}", i.getName(), i.getItemS().getName());
+          logger.debug("{}, size: {}x{}, parent: {}", i.getName(), i.getSizeX(), i.getSizeY(), i
+              .getItemS().getName());
           // you can access bidirectional from Image(child) to Item(parent)
         }
       }
@@ -67,7 +70,8 @@ public class MappingCollectionsComponents {
   }
 
   public void doSecondUnit() {
-    // Second unit of work: Item with a set of images that does allow null values
+    // Second unit of work: Item with
+    // a Collection of images that does allow null values & duplicate Images
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction tx = session.beginTransaction();
 
@@ -76,7 +80,8 @@ public class MappingCollectionsComponents {
     images.add(new ImageC("Bar Image 1", "bar1.png", 125, 125));
     images.add(new ImageC("Bar Image 2", "bar2.png", 400, 200));
     images.add(new ImageC("Bar Image 3", "bar3.png", 50, 50));
-
+    images.add(new ImageC("Bar Image 3", "bar3.png", 50, 50));
+    images.add(new ImageC("Bar image 4", "bar4.png", null, null));
     item.setImages(images);
 
     session.persist(item);
@@ -99,7 +104,8 @@ public class MappingCollectionsComponents {
       logger.debug(item.toString());
       if (!item.getImages().isEmpty()) {
         for (ImageC i : item.getImages()) {
-          logger.debug("{}, parent: {}", i.getName(), i.getItemC().getName());
+          logger.debug("{}, size: {}x{}, parent: {}", i.getName(), i.getSizeX(), i.getSizeY(), i
+              .getItemC().getName());
           // you can access bidirectional from Image(child) to Item(parent)
         }
       }

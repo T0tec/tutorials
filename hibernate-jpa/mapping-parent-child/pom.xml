@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.t0tec.tutorials</groupId>
-	<artifactId>mapping-collections-components</artifactId>
+	<artifactId>mapping-parent-child</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>mapping-collections-components</name>
+	<name>mapping-parent-child</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
