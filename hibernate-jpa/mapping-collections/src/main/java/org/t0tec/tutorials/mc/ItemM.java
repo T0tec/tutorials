@@ -59,7 +59,7 @@ public class ItemM {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("ItemM{" + getId() + "}, " + "name: " + getName() + ",  images size: "
-        + getImages().size() + " ");
+        + getImages().size() + ", ");
 
     sb.append("filenames: {");
     for (String s : images.values()) {

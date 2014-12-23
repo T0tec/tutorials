@@ -1,8 +1,9 @@
-package org.t0tec.tutorials.mc;
+package org.t0tec.tutorials.mcc;
 
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -12,29 +13,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Sort;
-import org.hibernate.annotations.SortType;
-
 @Entity
-@Table(name = "ITEM_SS")
-public class ItemSS {
+@Table(name = "ITEM_S")
+public class ItemS {
   @Id
   @GeneratedValue
-  @Column(name = "ITEM_SS_ID")
+  @Column(name = "ITEM_S_ID")
   private Long Id;
   @Column(name = "NAME", nullable = false)
   private String name;
 
-  @ElementCollection(targetClass = java.lang.String.class)
-  @JoinTable(name = "ITEM_SS_IMAGE", joinColumns = @JoinColumn(name = "ITEM_SS_ID"))
-  @Column(name = "FILENAME", nullable = false)
-  @Sort(type = SortType.NATURAL)
-  // Or use custom Comparator
-  private SortedSet<String> images = new TreeSet<String>();
+  @ElementCollection
+  @JoinTable(name = "ITEM_S_IMAGE", joinColumns = @JoinColumn(name = "ITEM_S_ID"))
+  @AttributeOverride(name = "element.name", column = @Column(name = "IMAGENAME", length = 255,
+      nullable = false))
+  private Set<ImageS> images = new HashSet<ImageS>();
 
-  public ItemSS() {}
+  public ItemS() {}
 
-  public ItemSS(String name) {
+  public ItemS(String name) {
     this.name = name;
   }
 
@@ -50,23 +47,23 @@ public class ItemSS {
     this.name = name;
   }
 
-  public SortedSet<String> getImages() {
-    return this.images;
+  public Set<ImageS> getImages() {
+    return images;
   }
 
-  public void setImages(SortedSet<String> images) {
+  public void setImages(Set<ImageS> images) {
     this.images = images;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("ItemSS{" + getId() + "}, " + "name: " + getName() + ",  images size: "
+    sb.append("ItemS{" + getId() + "}, " + "name: " + getName() + ",  images size: "
         + getImages().size() + ", ");
 
     sb.append("filenames: {");
-    for (String s : images) {
-      sb.append(s).append(", ");
+    for (ImageS i : images) {
+      sb.append(i.getFilename()).append(", ");
     }
 
     sb.delete(sb.length() - 2, sb.length());

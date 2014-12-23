@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class ItemL {
   @Column(name = "NAME", nullable = false)
   private String name;
 
-  @org.hibernate.annotations.CollectionOfElements
+  @ElementCollection
   @JoinTable(name = "ITEM_L_IMAGE", joinColumns = @JoinColumn(name = "ITEM_L_ID"))
   @org.hibernate.annotations.IndexColumn(name = "POSITION", base = 1)
   // position will start from 0 without base
@@ -58,7 +59,7 @@ public class ItemL {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("ItemL{" + getId() + "}, " + "name: " + getName() + ",  images size: "
-        + getImages().size() + " ");
+        + getImages().size() + ", ");
 
     sb.append("filenames: {");
     for (Object o : images) {

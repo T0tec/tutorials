@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.mc;
+package org.t0tec.tutorials.mcc;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,12 +25,11 @@ public class ItemC {
   @Column(name = "NAME", nullable = false)
   private String name;
 
-  @ElementCollection(targetClass = java.lang.String.class)
+  @ElementCollection
   @JoinTable(name = "ITEM_C_IMAGE", joinColumns = @JoinColumn(name = "ITEM_C_ID"))
-  @Column(name = "FILENAME")
-  @CollectionId(columns = @Column(name = "ITEM_IMAGE_ID"), type = @Type(type = "long"),
+  @CollectionId(columns = @Column(name = "ITEM_C_IMAGE_ID"), type = @Type(type = "long"),
       generator = "sequence")
-  private Collection<String> images = new ArrayList<String>();
+  private Collection<ImageC> images = new ArrayList<ImageC>();
 
   public ItemC() {}
 
@@ -50,23 +49,24 @@ public class ItemC {
     this.name = name;
   }
 
-  public Collection<String> getImages() {
-    return this.images;
+  public Collection<ImageC> getImages() {
+    return images;
   }
 
-  public void setImages(Collection<String> images) {
+  public void setImages(Collection<ImageC> images) {
     this.images = images;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("ItemC{" + getId() + "}, " + "name: " + getName() + ",  images size: "
+    sb.append("Item{" + getId() + "}, " + "name: " + getName() + ",  images size: "
         + getImages().size() + ", ");
 
     sb.append("filenames: {");
     for (Object o : images) {
-      sb.append(o).append(", ");
+      ImageC i = (ImageC) o;
+      sb.append(i.getFilename()).append(", ");
     }
 
     sb.delete(sb.length() - 2, sb.length());
