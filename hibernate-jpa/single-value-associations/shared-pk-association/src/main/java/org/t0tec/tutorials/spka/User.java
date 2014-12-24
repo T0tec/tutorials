@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.msv;
+package org.t0tec.tutorials.spka;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

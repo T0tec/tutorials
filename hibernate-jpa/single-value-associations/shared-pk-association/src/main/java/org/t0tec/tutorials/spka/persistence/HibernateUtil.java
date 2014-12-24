@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.msv.persistence;
+package org.t0tec.tutorials.spka.persistence;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

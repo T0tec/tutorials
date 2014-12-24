@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.msv;
+package org.t0tec.tutorials.spka;
 
 import java.util.List;
 
@@ -8,15 +8,15 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.t0tec.tutorials.msv.persistence.HibernateUtil;
+import org.t0tec.tutorials.spka.persistence.HibernateUtil;
 
-public class OneToOne {
+public class SharedPKAssociation {
 
-  private static final Logger logger = LoggerFactory.getLogger(OneToOne.class);
+  private static final Logger logger = LoggerFactory.getLogger(SharedPKAssociation.class);
 
   public static void main(String[] args) {
-    OneToOne oneToOne = new OneToOne();
-    oneToOne.doWork();
+    SharedPKAssociation spka = new SharedPKAssociation();
+    spka.doWork();
   }
 
   public void doWork() {

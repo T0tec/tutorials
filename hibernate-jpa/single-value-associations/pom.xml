@@ -1,14 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>org.t0tec.tutorials</groupId>
-	<artifactId>mapping-single-value</artifactId>
+	<artifactId>single-value-associations</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
-	<name>mapping-single-value</name>
-	<url>http://maven.apache.org</url>
+	<packaging>pom</packaging>
+	<name>single-value-associations</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -95,17 +92,17 @@
 						<configuration>
 							<target>
 								<!-- For an introduction to the <hibernatetool> Ant Task see http://docs.jboss.org/tools/4.1.0.Final/en/hibernatetools/html_single/index.html#ant -->
-								<echo message="Ant target, through maven-antrun-plugin, started" />
+								<echo message="Ant target, through maven-antrun-plugin, started"/>
 
-								<property name="maven_compile_classpath" refid="maven.compile.classpath" />
-								<property name="maven_test_classpath" refid="maven.test.classpath" />
+								<property name="maven_compile_classpath" refid="maven.compile.classpath"/>
+								<property name="maven_test_classpath" refid="maven.test.classpath"/>
 								<path id="hibernatetool.path">
 									<!-- Despite what states the documentation about referencing the 
 										Maven classpaths at http://maven.apache.org/plugins/maven-antrun-plugin/examples/classpaths.html 
 										writing: <pathelement path="maven.test.classpath" /> does not work for this 
 										project. So I have set ant properties that refer to appropriate Maven classpathes. -->
-									<pathelement path="${maven_compile_classpath}" />
-									<pathelement path="${maven_test_classpath}" />
+									<pathelement path="${maven_compile_classpath}"/>
+									<pathelement path="${maven_test_classpath}"/>
 								</path>
 
 								<!-- As described in "Using tasks not included in Ant's default jar" 
@@ -121,24 +118,20 @@
 									scope. Thus hibernate-tools dependencies were both on the maven.compile.classpath 
 									and the maven.test.classpath, so I have defined a "hibernatetool.path" that 
 									groups the compile and the test classpath. -->
-								<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask"
-									classpathref="hibernatetool.path" />
+								<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="hibernatetool.path"/>
 
-								<property name="generatedByHibernate.outputDirectory"
-									value="${project.build.directory}/generated/hibernatetool" />
-								<mkdir dir="${generatedByHibernate.outputDirectory}" />
+								<property name="generatedByHibernate.outputDirectory" value="${project.build.directory}/generated/hibernatetool"/>
+								<mkdir dir="${generatedByHibernate.outputDirectory}"/>
 
 								<hibernatetool destdir="${generatedByHibernate.outputDirectory}">
 									<classpath>
-										<path location="${project.build.directory}/classes" />
+										<path location="${project.build.directory}/classes"/>
 									</classpath>
-									<configuration
-										configurationfile="${project.build.directory}/classes/hibernate.cfg.xml" />
-									<hbm2ddl export="true" drop="true" create="true"
-										outputfilename="helloworld.ddl" format="true" />
+									<configuration configurationfile="${project.build.directory}/classes/hibernate.cfg.xml"/>
+									<hbm2ddl export="true" drop="true" create="true" outputfilename="test.ddl" format="true"/>
 								</hibernatetool>
 
-								<echo message="Ant target, through maven-antrun-plugin, terminated" />
+								<echo message="Ant target, through maven-antrun-plugin, terminated"/>
 							</target>
 						</configuration>
 						<goals>
@@ -175,7 +168,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -185,5 +178,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
+  <modules>
+    <module>shared-pk-association</module>
+  </modules>
 </project>
