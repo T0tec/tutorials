@@ -181,5 +181,6 @@
   <modules>
     <module>shared-pk-association</module>
     <module>one-to-one-fk-association</module>
+    <module>one-to-many-with-join-table</module>
   </modules>
 </project>
