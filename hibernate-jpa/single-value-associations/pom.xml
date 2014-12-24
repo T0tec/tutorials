@@ -180,5 +180,6 @@
 	</build>
   <modules>
     <module>shared-pk-association</module>
+    <module>one-to-one-fk-association</module>
   </modules>
 </project>
