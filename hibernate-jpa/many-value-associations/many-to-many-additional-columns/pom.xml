@@ -5,5 +5,5 @@
     <artifactId>many-value-associations</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>one-to-many-with-join-with-added-columns</artifactId>
+  <artifactId>many-to-many-additional-column</artifactId>
 </project>

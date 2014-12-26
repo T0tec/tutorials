@@ -186,10 +186,9 @@
 		<module>one-to-many-association</module>
 		<module>one-to-many-with-postion</module>
 		<module>one-to-many-with-join</module>
-		<module>
-			one-to-many-with-join-to-collection-of-components
-		</module>
+		<module>many-to-many-additional-columns</module>
 		<module>many-to-many-association</module>
+		<module>many-to-many-additional-columns-with-collections-of-components</module>
 		<module>ternary-association-with-join-table</module>
 	</modules>
 </project>
