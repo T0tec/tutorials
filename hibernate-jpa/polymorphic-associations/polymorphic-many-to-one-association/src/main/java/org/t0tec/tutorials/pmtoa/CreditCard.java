@@ -37,11 +37,9 @@ public class CreditCard extends BillingDetails {
     return type;
   }
 
-
   public void setType(CreditCardType type) {
     this.type = type;
   }
-
 
   public String getNumber() {
     return number;

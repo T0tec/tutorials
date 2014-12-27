@@ -134,7 +134,16 @@ public class User {
   }
 
   public void addBillingDetails(BillingDetails billingDetails) {
-    this.billingDetails.add(billingDetails);
+    // billingDetails.setUser(this);
+    // this.billingDetails.add(billingDetails);
+
+    if (billingDetails == null)
+      throw new IllegalArgumentException("Can't add a null BillingDetails.");
+    this.getBillingDetails().add(billingDetails);
+
+    if (getBillingDetails().size() == 1) {
+      setDefaultBillingDetails(billingDetails);
+    }
   }
 
   public void setDefaultBillingDetails(BillingDetails billingDetails) {

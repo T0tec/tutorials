@@ -47,7 +47,6 @@ public class PolymorphicManyToOne {
     secondTransaction.commit();
     secondSession.close();
 
-
     // Third unit of work
     Session thirdSession = HibernateUtil.getSessionFactory().openSession();
     Transaction thirdTransaction = thirdSession.beginTransaction();
@@ -117,8 +116,6 @@ public class PolymorphicManyToOne {
     seventhSession.close();
 
     // Last unit of work
-    getAllBankAccounts();
-    getAllCreditCards();
     getAllBillingDetails();
 
 
@@ -126,47 +123,16 @@ public class PolymorphicManyToOne {
     HibernateUtil.shutdown();
   }
 
-  private void getAllBankAccounts() throws HibernateException {
-    Session newSession = HibernateUtil.getSessionFactory().openSession();
-    Transaction newTransaction = newSession.beginTransaction();
-
-    List<BankAccount> accounts =
-        listAndCast(newSession.createQuery("from BankAccount ba order by ba.account asc"));
-    logger.debug("{} bank account(s) found", accounts.size());
-    for (BankAccount bankAccount : accounts) {
-      logger.debug(bankAccount.toString());
-    }
-
-    newTransaction.commit();
-    newSession.close();
-  }
-
-  private void getAllCreditCards() throws HibernateException {
-    Session newSession = HibernateUtil.getSessionFactory().openSession();
-    Transaction newTransaction = newSession.beginTransaction();
-
-    List<CreditCard> creditcards =
-        listAndCast(newSession.createQuery("from CreditCard cc order by cc.number asc"));
-    logger.debug("{} credit card(s) found", creditcards.size());
-    for (CreditCard creditCard : creditcards) {
-      logger.debug(creditCard.toString());
-    }
-
-    newTransaction.commit();
-    newSession.close();
-  }
-
   private void getAllBillingDetails() throws HibernateException {
     Session newSession = HibernateUtil.getSessionFactory().openSession();
     Transaction newTransaction = newSession.beginTransaction();
 
     List<BillingDetails> billingDetails =
-        listAndCast(newSession.createQuery(
-            "from BillingDetails bd where bd.owner=:owner order by bd.number asc").setParameter(
-            "owner", "John Doe"));
+        listAndCast(newSession.createQuery("from BillingDetails bd order by bd.number asc"));
     logger.debug("{} billing detail(s) found", billingDetails.size());
     for (BillingDetails bd : billingDetails) {
       logger.debug(bd.toString());
+      // logger.debug("{}", bd.getUser().getId()); // TODO: why NullPointerExc?
     }
 
     newTransaction.commit();

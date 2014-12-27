@@ -49,6 +49,10 @@ public abstract class BillingDetails {
     return user;
   }
 
+  public void setUser(User user) {
+    this.user = user;
+  }
+
   public void pay(BigDecimal bigDecimal) {
     // TODO: needs to be implemented
   }
