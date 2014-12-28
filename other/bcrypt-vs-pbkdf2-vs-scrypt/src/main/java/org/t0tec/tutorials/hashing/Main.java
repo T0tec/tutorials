@@ -1,6 +1,8 @@
-package org.mindrot.jbcrypt;
+package org.t0tec.tutorials.hashing;
 
 import net.crackstation.hashing.PasswordHash;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.lambdaworks.crypto.SCryptUtil;
 
@@ -9,8 +11,8 @@ public class Main {
   public static void main(String[] args) {
     String password = "passw0Rd";
     testBCrypt(password);
-    testPBKDF2(password);
-    testSCrypt(password);
+    // testPBKDF2(password);
+    // testSCrypt(password);
   }
 
   public static void testBCrypt(String password) {
