@@ -185,5 +185,7 @@
 		<module>natural-key</module>
 		<module>composite-natural-key</module>
 		<module>foreign-keys-in-composite-pk</module>
+		<module>foreign-key-referencing-non-pk</module>
+		<module>composite-foreign-key-referencing-non-pk</module>
 	</modules>
 </project>
