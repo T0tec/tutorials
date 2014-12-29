@@ -187,5 +187,6 @@
 		<module>foreign-keys-in-composite-pk</module>
 		<module>foreign-key-referencing-non-pk</module>
 		<module>composite-foreign-key-referencing-non-pk</module>
+		<module>arbitrary-join-conditions-with-formulas</module>
 	</modules>
 </project>

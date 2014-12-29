@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.t0tec.tutorials.ajcwf.Bid" table="BID">
+		<id name="id" column="BID_ID">
+			<generator class="increment" />
+		</id>
+
+		<property name="amount" column="AMOUNT" />
+
+		<properties name="successfulReference">
+			<property name="successful" column="SUCCESSFUL" type="true_false" />
+			<many-to-one name="item" class="org.t0tec.tutorials.ajcwf.Item" column="ITEM_ID" />
+		</properties>
+	</class>
+</hibernate-mapping>

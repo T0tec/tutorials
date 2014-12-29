@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.t0tec.tutorials.ajcwf.Item" table="ITEM">
+		<id name="id" column="ITEM_ID">
+			<generator class="increment" />
+		</id>
+
+		<property name="name" column="NAME" />
+		<property name="initialPrice" column="INITIAL_PRICE" />
+		<property name="reservePrice" column="RESERVE_PRICE" />
+
+		<one-to-one name="successfulBid" property-ref="successfulReference">
+			<formula>'T'</formula>
+			<formula>ITEM_ID</formula>
+		</one-to-one>
+
+		<set name="bids" inverse="true">
+			<key column="ITEM_ID" />
+			<one-to-many class="org.t0tec.tutorials.ajcwf.Bid" />
+		</set>
+	</class>
+</hibernate-mapping>
