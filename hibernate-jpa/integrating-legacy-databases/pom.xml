@@ -188,5 +188,8 @@
 		<module>foreign-key-referencing-non-pk</module>
 		<module>composite-foreign-key-referencing-non-pk</module>
 		<module>arbitrary-join-conditions-with-formulas</module>
+		<module>joining-arbitrary-tables-into-secondary-tables</module>
+		<module>inverse-joined-properties</module>
+		<module>triggers-insert-update</module>
 	</modules>
 </project>

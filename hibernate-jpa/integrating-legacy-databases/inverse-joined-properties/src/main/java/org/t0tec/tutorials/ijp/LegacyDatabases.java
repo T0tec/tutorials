@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.ajcwf;
+package org.t0tec.tutorials.ijp;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.t0tec.tutorials.ajcwf.persistence.HibernateUtil;
+import org.t0tec.tutorials.ijp.persistence.HibernateUtil;
 
 public class LegacyDatabases {
 
@@ -20,7 +20,6 @@ public class LegacyDatabases {
     ld.doWork();
   }
 
-  // TODO: Find an Annotation solution
   public void doWork() {
     // First unit of work
     Session session = HibernateUtil.getSessionFactory().openSession();
@@ -28,28 +27,20 @@ public class LegacyDatabases {
 
     Item fooItem = new Item("Foo");
 
-    Bid bidOne = new Bid(new BigDecimal(49));
-    bidOne.setItem(fooItem);
-    session.save(bidOne);
+    DailyBilling db = new DailyBilling(1, new BigDecimal(49));
+    db.setItem(fooItem);
 
-    Bid succesfulBid = new Bid(new BigDecimal(99));
-    succesfulBid.setItem(fooItem);
-    session.save(succesfulBid);
+    session.save(db);
 
-    fooItem.getBids().add(bidOne);
-    fooItem.getBids().add(succesfulBid);
-    fooItem.setSuccessfulBid(succesfulBid);
+    fooItem.setBillingTotal(db.getTotal());
+
     session.save(fooItem);
-
-    Item barItem = new Item("Bar");
-    session.save(barItem);
 
     tx.commit();
     session.close();
 
-    // Last unit of work
+    // Second unit of work
     getAllItems();
-    getSuccessfulBidOfAllItems();
 
     // Shutting down the application
     HibernateUtil.shutdown();
@@ -63,27 +54,6 @@ public class LegacyDatabases {
     logger.debug("{} item(s) found", items.size());
     for (Item i : items) {
       logger.debug(i.toString());
-
-      for (Bid b : i.getBids()) {
-        logger.debug("[{}, {}]", b.getAmount(), b.getSuccessful());
-      }
-    }
-    newTransaction.commit();
-    newSession.close();
-  }
-
-  public void getSuccessfulBidOfAllItems() {
-    Session newSession = HibernateUtil.getSessionFactory().openSession();
-    Transaction newTransaction = newSession.beginTransaction();
-
-    List<Item> items =
-        listAndCast(newSession.createQuery("from Item i where i.successfulBid.successful = 'T'"));
-    logger.debug("{} item(s) found", items.size());
-    for (Item i : items) {
-      logger.debug(i.toString());
-      if (i.getSuccessfulBid() != null) {
-        logger.debug(i.getSuccessfulBid().toString());
-      }
     }
     newTransaction.commit();
     newSession.close();

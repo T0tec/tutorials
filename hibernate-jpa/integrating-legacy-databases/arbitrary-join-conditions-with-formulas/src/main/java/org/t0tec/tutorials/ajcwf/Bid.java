@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class Bid {
   private long id;
   private BigDecimal amount;
-  private Boolean successful = false;
+  private Boolean successful;
   private Item item;
 
   public Bid() {}
