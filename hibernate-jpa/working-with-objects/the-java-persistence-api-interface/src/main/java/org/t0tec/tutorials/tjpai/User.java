@@ -1,7 +1,8 @@
-package org.t0tec.tutorials.thi;
+package org.t0tec.tutorials.tjpai;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,6 +10,9 @@ import javax.persistence.Table;
 @Table(name = "USER")
 public class User {
   @Id
+  @GeneratedValue
+  @Column(name = "USER_ID")
+  private long id;
   @Column(name = "USERNAME", length = 16, nullable = false)
   private String username;
   @Column(name = "FIRSTNAME", length = 255, nullable = false)
@@ -35,6 +39,14 @@ public class User {
     this.email = email;
     this.ranking = ranking;
     this.admin = admin;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  private void setId(long id) {
+    this.id = id;
   }
 
   public String getFirstname() {
@@ -95,9 +107,10 @@ public class User {
 
   @Override
   public String toString() {
-    return "User [getFirstname()=" + getFirstname() + ", getLastname()=" + getLastname()
-        + ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getEmail()="
-        + getEmail() + ", getRanking()=" + getRanking() + ", isAdmin()=" + isAdmin() + "]";
+    return "User [getId()=" + getId() + ", getFirstname()=" + getFirstname() + ", getLastname()="
+        + getLastname() + ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword()
+        + ", getEmail()=" + getEmail() + ", getRanking()=" + getRanking() + ", isAdmin()="
+        + isAdmin() + "]";
   }
 
 }

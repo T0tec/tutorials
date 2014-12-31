@@ -183,5 +183,6 @@
 	</build>
 	<modules>
 		<module>the-hibernate-interface</module>
+		<module>the-java-persistence-api-interface</module>
 	</modules>
 </project>
