@@ -24,7 +24,7 @@ public class WorkingWithHibernate {
     // wwh.doFourthUnit();
     // wwh.doFifthUnit();
     // wwh.doSixthUnit();
-    // wwh.doSeventhUnit();
+    wwh.doSeventhUnit();
     // wwh.doEightUnit();
     // wwh.doNinthUnit();
     wwh.doTenthUnit();
@@ -246,10 +246,11 @@ public class WorkingWithHibernate {
 
     Session sessionTwo = HibernateUtil.getSessionFactory().openSession();
     Transaction tx2 = sessionTwo.beginTransaction();
-    // Changes made before the call to lock() aren’t propagated to the database
     item.setInitialPrice(new BigDecimal(179));
 
     // sessionTwo.lock(item, LockMode.NONE);
+    // http://stackoverflow.com/a/27726416/1754231
+    // Next line will reattach it so initialPrice gets updated
     sessionTwo.buildLockRequest(LockOptions.NONE).lock(item);
     item.setDescription("This playstation 3 is in a fine state");
     GregorianCalendar gc = new GregorianCalendar();
@@ -263,7 +264,7 @@ public class WorkingWithHibernate {
     tx2.commit();
     sessionTwo.close();
 
-    logger.debug(item.toString()); // still changes are made to initialPrice propery
+    logger.debug(item.toString());
   }
 
   // This means you don’t have to reattach (with update() or lock()) a detached
