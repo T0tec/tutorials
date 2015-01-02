@@ -22,9 +22,9 @@
 
 		<!-- List of XML mapping files -->
 		<mapping class="org.t0tec.tutorials.ccs.User" />
-        <mapping class="org.t0tec.tutorials.ccs.BillingDetails" />
-        <mapping class="org.t0tec.tutorials.ccs.BankAccount" />
-        <mapping class="org.t0tec.tutorials.ccs.CreditCard" />
-        <mapping class="org.t0tec.tutorials.ccs.Item" />
+		<mapping class="org.t0tec.tutorials.ccs.BillingDetails" />
+		<mapping class="org.t0tec.tutorials.ccs.BankAccount" />
+		<mapping class="org.t0tec.tutorials.ccs.CreditCard" />
+		<mapping class="org.t0tec.tutorials.ccs.Item" />
 	</session-factory>
 </hibernate-configuration>

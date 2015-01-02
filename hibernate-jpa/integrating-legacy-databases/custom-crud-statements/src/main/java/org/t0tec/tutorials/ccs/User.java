@@ -27,6 +27,7 @@ import org.hibernate.annotations.SQLInsert;
 
 @Entity
 @Table(name = "USER")
+@SecondaryTable(name = "BILLING_ADDRESS", pkJoinColumns = {@PrimaryKeyJoinColumn(name = "USER_ID")})
 // @Loader(namedQuery = "loadUser")
 // @NamedNativeQueries(
 // value = {
@@ -42,7 +43,6 @@ import org.hibernate.annotations.SQLInsert;
     name = "loadUser",
     query = "select u.*, i.* from USER u left outer join ITEM i on u.user_id = i.seller_id where u.user_id = :user_id",
     resultClass = User.class)
-@SecondaryTable(name = "BILLING_ADDRESS", pkJoinColumns = {@PrimaryKeyJoinColumn(name = "USER_ID")})
 @SQLInsert(
     sql = "insert into USER (USER_ID, IS_ADMIN, DEFAULT_BILLING_DETAILS_ID, EMAIL, FIRSTNAME, HOME_CITY, HOME_STREET, HOME_ZIPCODE, LASTNAME, \"PASSWORD\", RANK, USERNAME)  values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
 public class User {
