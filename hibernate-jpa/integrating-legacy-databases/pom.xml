@@ -191,5 +191,6 @@
 		<module>joining-arbitrary-tables-into-secondary-tables</module>
 		<module>inverse-joined-properties</module>
 		<module>triggers-insert-update</module>
+		<module>custom-crud-statements</module>
 	</modules>
 </project>
