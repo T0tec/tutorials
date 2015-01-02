@@ -22,5 +22,6 @@
 
 		<!-- List of XML mapping files -->
 		<mapping class="org.t0tec.tutorials.nk.User" />
+		<mapping class="org.t0tec.tutorials.nk.Item" />
 	</session-factory>
 </hibernate-configuration>

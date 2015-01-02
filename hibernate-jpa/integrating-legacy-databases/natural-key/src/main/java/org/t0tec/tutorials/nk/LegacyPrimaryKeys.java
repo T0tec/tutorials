@@ -1,5 +1,6 @@
 package org.t0tec.tutorials.nk;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -38,11 +39,17 @@ public class LegacyPrimaryKeys {
 
     session.flush();
 
+    Item item = new Item(new BigDecimal(199.99), "Playstation 3 inc. with all accessoires");
+
+    session.save(item);
+
     tx.commit();
     session.close();
 
     // Second unit of work
     getAllUsers();
+
+    logger.debug(item.toString());
 
     // Shutting down the application
     HibernateUtil.shutdown();
