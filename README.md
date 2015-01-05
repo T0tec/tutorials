@@ -7,15 +7,19 @@ Tutorials about Aspect Oriented Programming (AOP)
 
 ## Gradle
 
-Tutorials about Gradle (project managent/build tool built upon Ant) 
+Tutorials about Gradle (project managent/build tool built upon Ant)
 
 ## Hibernate-jpa
 
-Tutorials about Hibernate (v3) and JPA (Java Persistence API)
+Tutorials about Hibernate (v3.6.10.Final) and JPA (Java Persistence API)
 
 ## Maven
 
 Tutorials about Maven (project management/build tool)
+
+## Other
+
+Tutorials about varying projects/problems
 
 ## Scala
 
