@@ -197,5 +197,6 @@
 	<modules>
 		<module>persistence-by-reachability</module>
 		<module>transitive-associations-with-jpa</module>
+		<module>bulk-statements-with-hql-and-jpa-ql</module>
 	</modules>
 </project>
