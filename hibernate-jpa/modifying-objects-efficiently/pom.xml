@@ -102,26 +102,26 @@
 									name="maven_test_classpath"
 									refid="maven.test.classpath" />
 								<path id="hibernatetool.path">
-									<!-- Despite what states the documentation about referencing the 
-										Maven classpaths at http://maven.apache.org/plugins/maven-antrun-plugin/examples/classpaths.html 
-										writing: <pathelement path="maven.test.classpath" /> does not work for this 
+									<!-- Despite what states the documentation about referencing the
+										Maven classpaths at http://maven.apache.org/plugins/maven-antrun-plugin/examples/classpaths.html
+										writing: <pathelement path="maven.test.classpath" /> does not work for this
 										project. So I have set ant properties that refer to appropriate Maven classpathes. -->
 									<pathelement path="${maven_compile_classpath}" />
 									<pathelement path="${maven_test_classpath}" />
 								</path>
 
-								<!-- As described in "Using tasks not included in Ant's default jar" 
-									at http://maven.apache.org/plugins/maven-antrun-plugin/examples/customTasks.html 
-									I should have: * used classpathref="maven.plugin.classpath" * written all 
-									hibernatetool dependencies but because there are too many dependencies to 
-									write, as shown at http://mvnrepository.com/artifact/org.hibernate/hibernate-tools/4.0.0-CR1, 
-									I have preferred to leverage on Maven dependency management. So I have declared 
-									hibernate-tools artifact as one of my project dependency leaving Maven finding 
-									out the transitive dependencies. But because dependencies on maven.plugin.classpath 
-									are not packaged in the jar I have explicity excluded hibernate-tools, and 
-									its dependencies, from my project packaging declaring them in the "test" 
-									scope. Thus hibernate-tools dependencies were both on the maven.compile.classpath 
-									and the maven.test.classpath, so I have defined a "hibernatetool.path" that 
+								<!-- As described in "Using tasks not included in Ant's default jar"
+									at http://maven.apache.org/plugins/maven-antrun-plugin/examples/customTasks.html
+									I should have: * used classpathref="maven.plugin.classpath" * written all
+									hibernatetool dependencies but because there are too many dependencies to
+									write, as shown at http://mvnrepository.com/artifact/org.hibernate/hibernate-tools/4.0.0-CR1,
+									I have preferred to leverage on Maven dependency management. So I have declared
+									hibernate-tools artifact as one of my project dependency leaving Maven finding
+									out the transitive dependencies. But because dependencies on maven.plugin.classpath
+									are not packaged in the jar I have explicity excluded hibernate-tools, and
+									its dependencies, from my project packaging declaring them in the "test"
+									scope. Thus hibernate-tools dependencies were both on the maven.compile.classpath
+									and the maven.test.classpath, so I have defined a "hibernatetool.path" that
 									groups the compile and the test classpath. -->
 								<taskdef
 									name="hibernatetool"
@@ -159,7 +159,7 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
+				<!--This plugin's configuration is used to store Eclipse m2e settings
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
@@ -198,5 +198,6 @@
 		<module>persistence-by-reachability</module>
 		<module>transitive-associations-with-jpa</module>
 		<module>bulk-statements-with-hql-and-jpa-ql</module>
+		<module>processing-with-batches</module>
 	</modules>
 </project>
