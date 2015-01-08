@@ -200,5 +200,6 @@
 		<module>bulk-statements-with-hql-and-jpa-ql</module>
 		<module>processing-with-batches</module>
 		<module>dynamic-data-filters</module>
+		<module>intercepting-hibernate-events</module>
 	</modules>
 </project>
