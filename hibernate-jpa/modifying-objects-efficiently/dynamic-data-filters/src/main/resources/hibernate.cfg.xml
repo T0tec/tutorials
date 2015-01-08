@@ -23,5 +23,6 @@
 		<!-- List of XML mapping files -->
 		<mapping class="org.t0tec.tutorials.ddf.User" />
 		<mapping class="org.t0tec.tutorials.ddf.Item" />
+		<mapping class="org.t0tec.tutorials.ddf.Category" />
 	</session-factory>
 </hibernate-configuration>

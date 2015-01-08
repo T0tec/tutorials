@@ -22,7 +22,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER")
-@SecondaryTable(name = "HOME_ADDRESS", pkJoinColumns = {@PrimaryKeyJoinColumn(name = "USER_ID")})
 public class User {
   @Id
   @GeneratedValue

@@ -55,6 +55,7 @@ public class ManyToMany {
     logger.debug("{} Category(ies) found", categories.size());
     for (Category c : categories) {
       logger.debug(c.toString());
+      logger.debug(c.getItems().toString());
     }
 
     newTransaction.commit();

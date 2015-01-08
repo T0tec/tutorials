@@ -3,12 +3,15 @@ package org.t0tec.tutorials.ddf;
 import org.hibernate.annotations.ForeignKey;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -51,6 +54,9 @@ public class Item {
   @ForeignKey(name = "FK_SELLER_ID")
   private User seller;
 
+  @ManyToMany(mappedBy = "items")
+  private Set<Category> categories = new HashSet<Category>();
+
   public Item() {}
 
   public Item(String name) {
@@ -83,6 +89,10 @@ public class Item {
 
   public void setSeller(User seller) {
     this.seller = seller;
+  }
+
+  public Set<Category> getCategories() {
+    return categories;
   }
 
   @Override
