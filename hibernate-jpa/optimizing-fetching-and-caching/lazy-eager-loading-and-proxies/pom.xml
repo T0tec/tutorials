@@ -9,5 +9,5 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>the-object-retrieval-options</artifactId>
+    <artifactId>lazy-eager-loading-and-proxies</artifactId>
 </project>

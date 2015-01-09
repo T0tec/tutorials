@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>the-object-retrieval-options</module>
+        <module>lazy-eager-loading-and-proxies</module>
     </modules>
     <packaging>pom</packaging>
 
