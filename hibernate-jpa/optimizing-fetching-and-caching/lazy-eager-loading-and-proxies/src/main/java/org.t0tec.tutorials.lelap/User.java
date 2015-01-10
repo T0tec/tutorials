@@ -2,10 +2,14 @@ package org.t0tec.tutorials.lelap;
 
 import org.hibernate.annotations.Proxy;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +39,9 @@ public class User {
   private int ranking;
   @Column(name = "IS_ADMIN", nullable = true)
   private boolean admin;
+
+  @OneToMany(mappedBy = "seller")
+  private Set<Item> itemsForSale = new HashSet<Item>();
 
   public User() {}
 
@@ -111,6 +118,14 @@ public class User {
 
   public void setAdmin(boolean admin) {
     this.admin = admin;
+  }
+
+  public Set<Item> getItemsForSale() {
+    return itemsForSale;
+  }
+
+  public void setItemsForSale(Set<Item> itemsForSale) {
+    this.itemsForSale = itemsForSale;
   }
 
   @Override

@@ -18,7 +18,7 @@ public class LazyEagerLoadingAndProxies {
     lelap.doSecondUnit();
     lelap.doThirdUnit();
     lelap.doFourthUnit();
-
+    lelap.doFifthUnit();
     // Shutting down the application
     HibernateUtil.shutdown();
   }
@@ -29,6 +29,8 @@ public class LazyEagerLoadingAndProxies {
 
     Item item = new Item("Playstation 3");
     item.setDescription("Playstation 3 inc. all accessories");
+    item.setSeller(user);
+    user.getItemsForSale().add(item);
 
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction tx = session.beginTransaction();
@@ -88,4 +90,19 @@ public class LazyEagerLoadingAndProxies {
     tx.commit();
     session.close();
   }
+
+  public void doFifthUnit() {
+    // Fifth unit of work
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction tx = session.beginTransaction();
+
+    Item item = (Item) session.get(Item.class, new Long(1));
+    User seller = item.getSeller();
+
+    logger.debug(seller.toString());
+
+    tx.commit();
+    session.close();
+  }
+
 }

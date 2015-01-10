@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -35,10 +37,31 @@ public class Item {
       org.hibernate.annotations.LazyCollectionOption.EXTRA
   )
   // The FetchType.EAGER provides the same guarantees as lazy="false"
-  @OneToMany(mappedBy = "item", orphanRemoval = true, fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "item", orphanRemoval = true) // fetch = FetchType.EAGER
   @Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE,
       org.hibernate.annotations.CascadeType.REMOVE})
   private Set<Bid> bids = new HashSet<Bid>();
+
+
+  @ManyToOne
+  @JoinColumn(name="SELLER_ID", nullable = false, updatable = false)
+  //  To enable interception, the bytecode of your classes must be instrumented after
+  //  compilation, before runtime. Hibernate provides an Ant task for that purpose:
+  //  <target name="instrument" depends="compile">
+  //    <taskdef name="instrument"
+  //    classname=
+  //      "org.hibernate.tool.instrument.cglib.InstrumentTask"
+  //    classpathref="project.classpath"/>
+  //    <instrument verbose="true">
+  //      <fileset dir="${build.dir}/my/entity/package/">
+  //      <include name="*.class"/>
+  //      </fileset>
+  //    </instrument>
+  //  </target>
+  @org.hibernate.annotations.LazyToOne(
+      org.hibernate.annotations.LazyToOneOption.NO_PROXY
+  )
+  private User seller;
 
   public Item() {}
 
@@ -81,6 +104,14 @@ public class Item {
   public void addBid(Bid bid) {
     bid.setItem(this);
     bids.add(bid);
+  }
+
+  public User getSeller() {
+    return seller;
+  }
+
+  public void setSeller(User seller) {
+    this.seller = seller;
   }
 
   @Override
