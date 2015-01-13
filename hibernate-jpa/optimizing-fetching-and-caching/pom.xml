@@ -10,6 +10,8 @@
     <modules>
         <module>the-object-retrieval-options</module>
         <module>lazy-eager-loading-and-proxies</module>
+        <module>fetch-strategies</module>
+        <module>nplusone-problem</module>
     </modules>
     <packaging>pom</packaging>
 
