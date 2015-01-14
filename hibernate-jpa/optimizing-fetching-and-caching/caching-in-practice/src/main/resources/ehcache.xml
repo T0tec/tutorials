@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+         monitoring="autodetect" dynamicConfig="true">
+
+    <!--<diskStore path="java.io.tmpdir/ehcache" />-->
+
+    <defaultCache eternal="false"
+                  timeToIdleSeconds="120" timeToLiveSeconds="120"
+                  statistics="true">
+    </defaultCache>
+
+
+    <cache name="org.t0tec.tutorials.cip.Category"
+           maxElementsInMemory="500"
+           eternal="true"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+            />
+
+    <cache name="org.t0tec.tutorials.cip.Bid"
+           maxElementsInMemory="50000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="100000"
+           overflowToDisk="false"
+            />
+</ehcache>

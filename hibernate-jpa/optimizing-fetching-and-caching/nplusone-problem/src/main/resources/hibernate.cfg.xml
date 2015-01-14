@@ -21,8 +21,8 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 
 		<!-- List of XML mapping files -->
-		<mapping class="org.t0tec.tutorials.Item" />
-		<mapping class="org.t0tec.tutorials.Bid" />
-		<mapping class="org.t0tec.tutorials.User" />
+		<mapping class="org.t0tec.tutorials.np.Item" />
+		<mapping class="org.t0tec.tutorials.np.Bid" />
+		<mapping class="org.t0tec.tutorials.np.User" />
 	</session-factory>
 </hibernate-configuration>

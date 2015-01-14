@@ -13,6 +13,7 @@
         <module>fetch-strategies</module>
         <module>nplusone-problem</module>
         <module>cartesian-product-problem</module>
+        <module>caching-in-practice</module>
     </modules>
     <packaging>pom</packaging>
 
