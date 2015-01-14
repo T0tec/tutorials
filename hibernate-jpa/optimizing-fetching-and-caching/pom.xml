@@ -12,6 +12,7 @@
         <module>lazy-eager-loading-and-proxies</module>
         <module>fetch-strategies</module>
         <module>nplusone-problem</module>
+        <module>cartesian-product-problem</module>
     </modules>
     <packaging>pom</packaging>
 

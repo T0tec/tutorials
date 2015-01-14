@@ -14,15 +14,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FetchStrategies {
+public class NPlusOneProblem {
 
-  private static final Logger logger = LoggerFactory.getLogger(FetchStrategies.class);
+  private static final Logger logger = LoggerFactory.getLogger(NPlusOneProblem.class);
 
   public static void main(String[] args) {
-    FetchStrategies fs = new FetchStrategies();
-    fs.doFirstUnit();
-    fs.doSecondUnit();
-    fs.doThirdUnit();
+    NPlusOneProblem npop = new NPlusOneProblem();
+    npop.doFirstUnit();
+    npop.doSecondUnit();
 
     // Shutting down the application
     HibernateUtil.shutdown();
@@ -120,15 +119,6 @@ public class FetchStrategies {
     for (Bid b : highestBids.values()) {
       logger.debug("highest bid {}", b.toString());
     }
-
-    tx.commit();
-    session.close();
-  }
-
-  public void doThirdUnit() {
-    // Third unit of work
-    Session session = HibernateUtil.getSessionFactory().openSession();
-    Transaction tx = session.beginTransaction();
 
     tx.commit();
     session.close();
