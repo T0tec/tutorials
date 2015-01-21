@@ -21,11 +21,11 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- List of Annotated mapping files -->
-        <mapping class="org.t0tec.tutorials.carq.User" />
-        <mapping class="org.t0tec.tutorials.carq.Item" />
-        <mapping class="org.t0tec.tutorials.carq.Bid" />
-        <mapping class="org.t0tec.tutorials.carq.Category" />
-        <mapping class="org.t0tec.tutorials.carq.BankAccount" />
-        <mapping class="org.t0tec.tutorials.carq.CreditCard" />
+        <mapping class="org.t0tec.tutorials.bhajq.User" />
+        <mapping class="org.t0tec.tutorials.bhajq.Item" />
+        <mapping class="org.t0tec.tutorials.bhajq.Bid" />
+        <mapping class="org.t0tec.tutorials.bhajq.Category" />
+        <mapping class="org.t0tec.tutorials.bhajq.BankAccount" />
+        <mapping class="org.t0tec.tutorials.bhajq.CreditCard" />
     </session-factory>
 </hibernate-configuration>

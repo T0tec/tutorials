@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.carq;
+package org.t0tec.tutorials.bhajq;
 
 import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.NamedQueries;
@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @NamedQueries({
@@ -42,6 +43,9 @@ public class Item {
   @Column(name = "DATE")
   private Date date;
 
+  @Column(name = "IS_ACTIVE")
+  private boolean isActive;
+
   @ManyToOne
   @JoinColumn(name = "SELLER_ID", nullable = false, updatable = false)
   @ForeignKey(name = "FK_SELLER_ID")
@@ -49,6 +53,9 @@ public class Item {
 
   @ManyToMany(mappedBy = "items")
   private Set<Category> categories = new HashSet<Category>();
+
+  @OneToOne
+  private Bid successfulBid;
 
   @OneToMany(mappedBy = "item")
   private Set<Bid> bids = new HashSet<Bid>();
@@ -59,6 +66,7 @@ public class Item {
     this.name = name;
     this.categories = categories;
     this.date = new Date();
+    this.isActive = true;
   }
 
   public Long getId() {
@@ -77,6 +85,10 @@ public class Item {
     return description;
   }
 
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   public Date getDate() {
     return date;
   }
@@ -85,8 +97,12 @@ public class Item {
     this.date = date;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public boolean isActive() {
+    return isActive;
+  }
+
+  public void setActive(boolean isActive) {
+    this.isActive = isActive;
   }
 
   public Set<Category> getCategories() {
@@ -105,6 +121,13 @@ public class Item {
     this.seller = seller;
   }
 
+  public Bid getSuccessfulBid() {
+    return successfulBid;
+  }
+
+  public void setSuccessfulBid(Bid successfulBid) {
+    this.successfulBid = successfulBid;
+  }
 
   public Set<Bid> getBids() {
     return bids;
@@ -113,7 +136,6 @@ public class Item {
   public void setBids(Set<Bid> bids) {
     this.bids = bids;
   }
-
 
   @Override
   public String toString() {
