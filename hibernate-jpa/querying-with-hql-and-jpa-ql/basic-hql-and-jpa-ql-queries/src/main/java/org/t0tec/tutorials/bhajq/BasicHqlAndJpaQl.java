@@ -278,7 +278,7 @@ public class BasicHqlAndJpaQl {
 
     Iterator pairs = q.list().iterator();
 
-    while ( pairs.hasNext() ) {
+    while (pairs.hasNext()) {
       Object[] pair = (Object[]) pairs.next();
       Item item = (Item) pair[0];
       Bid bid = (Bid) pair[1];

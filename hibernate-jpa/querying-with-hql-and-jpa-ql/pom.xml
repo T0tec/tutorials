@@ -10,6 +10,7 @@
     <modules>
         <module>creating-and-running-queries</module>
         <module>basic-hql-and-jpa-ql-queries</module>
+        <module>Joins-reporting-queries-and-subselects</module>
     </modules>
 
     <packaging>pom</packaging>
