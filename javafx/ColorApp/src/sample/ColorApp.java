@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package sample;
 
 import javafx.application.Application;
@@ -49,10 +45,11 @@ public class ColorApp extends Application implements EventHandler<MouseEvent> {
       @Override
       public void handle(ActionEvent t) {
         gray = !gray;
-        double gem = (sliderRed.getValue() + sliderBlue.getValue() + sliderGreen.getValue()) / 3.0;
-        sliderRed.setValue(gem);
-        sliderGreen.setValue(gem);
-        sliderBlue.setValue(gem);
+//        double average = (0.299 * sliderRed.getValue() + 0.587 * sliderGreen.getValue() + 0.114 * sliderBlue.getValue());
+        double average = (sliderRed.getValue() + sliderGreen.getValue() + sliderBlue.getValue()) / 3.0;
+        sliderRed.setValue(average);
+        sliderGreen.setValue(average);
+        sliderBlue.setValue(average);
         lblColor.setStyle(
             "-fx-background-color: rgb(" + (int) sliderRed.getValue() + "," + (int) sliderGreen
                 .getValue() + "," + (int) sliderBlue.getValue() + ")");
@@ -61,7 +58,7 @@ public class ColorApp extends Application implements EventHandler<MouseEvent> {
     });
 
     lblColor = new Label();
-    lblColor.setPrefSize(100, 100);
+    lblColor.setPrefSize(125, 125);
     lblColor.setStyle("-fx-background-color: rgb(0,0,0)");
 
     GridPane root = new GridPane();
@@ -121,7 +118,8 @@ public class ColorApp extends Application implements EventHandler<MouseEvent> {
       }
     }
     lblColor.setStyle(
-        "-fx-background-color: rgb(" + (int) sliderRed.getValue() + "," + (int) sliderGreen.getValue()
+        "-fx-background-color: rgb(" + (int) sliderRed.getValue() + "," + (int) sliderGreen
+            .getValue()
         + "," + (int) sliderBlue.getValue() + ")");
   }
 }
