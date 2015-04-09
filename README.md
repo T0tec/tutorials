@@ -13,6 +13,10 @@ Tutorials about Gradle (project managent/build tool built upon Ant)
 
 Tutorials about Hibernate (v3.6.10.Final) and JPA (Java Persistence API)
 
+## JavaFX
+
+Tutorials about JavaFX
+
 ## Maven
 
 Tutorials about Maven (project management/build tool)
