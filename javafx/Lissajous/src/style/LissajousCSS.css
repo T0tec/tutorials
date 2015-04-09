@@ -1,0 +1,30 @@
+.root {
+  -fx-background-color: ghostwhite;
+}
+
+.vbox {
+    -fx-padding: 10;
+}
+
+.bordered-titled-title {
+  -fx-background-color: ghostwhite;
+  -fx-translate-y: -10;
+  -fx-translate-x: 10;
+}
+
+.bordered-titled-border {
+  -fx-content-display: top;
+  -fx-border-insets: 10 10 10 10;
+  -fx-background-color: ghostwhite;
+  -fx-border-color: black;
+  -fx-border-width: 2;
+}
+
+.bordered-titled-content, .canvas {
+  -fx-padding: 10 10 10 10;
+}
+
+.canvas {
+  -fx-padding: 10 10 10 10;
+  -fx-border-width: 2;
+}
