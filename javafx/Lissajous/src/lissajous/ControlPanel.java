@@ -11,52 +11,52 @@ import javafx.scene.layout.VBox;
 public class ControlPanel extends VBox {
 
   private static final String[] FREQ = {"1", "2", "3", "4", "5"};
-  private static final int[] FAZES = {0, 45, 90, 135, 180};
+  private static final int[] phases = {0, 45, 90, 135, 180};
   private final LissajousData data;
 
   public ControlPanel(final LissajousData data) {
     this.data = data;
     getStyleClass().add("vbox");
-    radioBtnPanel horizFreqRadioBtnPanel = new radioBtnPanel("Horizontal frequency", FREQ);
+    RadioBtnPanel horizFreqRadioBtnPanel = new RadioBtnPanel("Horizontal frequency", FREQ);
     horizFreqRadioBtnPanel.addListener(new ChangeListener<Toggle>() {
       @Override
       public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue,
                           Toggle newValue) {
-        int selectie = Integer.parseInt((String) newValue.getUserData());
-        data.setHorizFreq(selectie);
+        int selection = Integer.parseInt((String) newValue.getUserData());
+        data.setHorizFreq(selection);
       }
     });
     getChildren().add(horizFreqRadioBtnPanel);
-    radioBtnPanel vertFreqRadioBtnPanel = new radioBtnPanel("Vertical frequency", FREQ);
+    RadioBtnPanel vertFreqRadioBtnPanel = new RadioBtnPanel("Vertical frequency", FREQ);
     vertFreqRadioBtnPanel.addListener(new ChangeListener<Toggle>() {
       @Override
       public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue,
                           Toggle newValue) {
-        int selectie = Integer.parseInt((String) newValue.getUserData());
-        data.setVertFreq(selectie);
+        int selection = Integer.parseInt((String) newValue.getUserData());
+        data.setVertFreq(selection);
       }
     });
     getChildren().add(vertFreqRadioBtnPanel);
     getChildren().add(makePhaseChoice("Phase difference in degrees"));
   }
 
-  private TitlePanel makePhaseChoice(String titel) {
+  private TitlePanel makePhaseChoice(String title) {
     HBox panel = new HBox();
     panel.setSpacing(10);
     panel.getChildren().add(new Label("Phase"));
-    ComboBox<Integer> keuzeFaze = new ComboBox<>();
-    for (int i = 0; i < FAZES.length; i++) {
-      keuzeFaze.getItems().add(FAZES[i]);
+    ComboBox<Integer> phaseChoice = new ComboBox<>();
+    for (int i = 0; i < phases.length; i++) {
+      phaseChoice.getItems().add(phases[i]);
     }
-    keuzeFaze.valueProperty().addListener(new ChangeListener<Integer>() {
+    phaseChoice.valueProperty().addListener(new ChangeListener<Integer>() {
       @Override
       public void changed(ObservableValue<? extends Integer> observable, Integer oldValue,
                           Integer newValue) {
         data.setPhaseDifference(newValue);
       }
     });
-    panel.getChildren().add(keuzeFaze);
-    TitlePanel titlePanel = new TitlePanel(titel);
+    panel.getChildren().add(phaseChoice);
+    TitlePanel titlePanel = new TitlePanel(title);
     titlePanel.setContent(panel);
     return titlePanel;
   }

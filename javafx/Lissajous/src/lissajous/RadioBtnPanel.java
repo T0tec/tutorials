@@ -6,26 +6,26 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 
-public class radioBtnPanel extends TitlePanel {
+public class RadioBtnPanel extends TitlePanel {
 
   private final ToggleGroup choices;
 
-  public radioBtnPanel(String title, String[] waarden) {
+  public RadioBtnPanel(String title, String[] values) {
     super(title);
     choices = new ToggleGroup();
-    setContent(makeChoiceGroup(waarden));
+    setContent(makeChoiceGroup(values));
   }
 
   private HBox makeChoiceGroup(String[] values) {
-    HBox paneel = new HBox();
-    paneel.setSpacing(10);
+    HBox panel = new HBox();
+    panel.setSpacing(10);
     for (String value : values) {
       RadioButton choice = new RadioButton(value);
       choice.setToggleGroup(choices);
       choice.setUserData(value);
-      paneel.getChildren().add(choice);
+      panel.getChildren().add(choice);
     }
-    return paneel;
+    return panel;
   }
 
   public void addListener(ChangeListener<Toggle> cl) {

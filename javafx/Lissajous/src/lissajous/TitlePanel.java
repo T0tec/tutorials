@@ -17,8 +17,8 @@ public class TitlePanel extends StackPane {
     getStyleClass().add("bordered-titled-border");
   }
 
-  public void setContent(Node paneel) {
-    paneel.getStyleClass().add("bordered-titled-content");
-    getChildren().add(paneel);
+  public void setContent(Node panel) {
+    panel.getStyleClass().add("bordered-titled-content");
+    getChildren().add(panel);
   }
 }
