@@ -13,21 +13,19 @@ import java.io.IOException;
  */
 public class AtomicTimeClockParser {
 
-  private Element content;
-
   public AtomicTimeClockParser() {
+  }
+
+  public String getAtomicTime() throws IOException {
     try {
       Connection.Response response = Jsoup.connect("http://time.is/just")
           .timeout(100000)
           .ignoreHttpErrors(true)
           .execute();
-      content = response.parse().getElementById("twd");
-    } catch (IOException e) {
-      System.out.println("io - " + e);
+      Element content = response.parse().getElementById("twd");
+      return content.text();
+    } catch (IOException ex) {
+      throw new IOException(ex);
     }
-  }
-
-  public String getAtomicTime() {
-    return this.content.text();
   }
 }

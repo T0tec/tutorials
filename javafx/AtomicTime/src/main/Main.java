@@ -1,5 +1,7 @@
 package main;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -46,7 +48,11 @@ public class Main extends Application {
     refreshBtn.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        atomicTimeTxt.setText(new AtomicTimeClockParser().getAtomicTime());
+        try {
+          atomicTimeTxt.setText(new AtomicTimeClockParser().getAtomicTime());
+        } catch (IOException e) {
+          throw new IllegalStateException(e);
+        }
       }
     });
 

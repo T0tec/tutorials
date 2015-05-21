@@ -103,5 +103,5 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
-# Unignore certain .jar files for Java Web Start
+# Unignore certain lib .jar files
 !javafx/AtomicTime/lib/*.jar
