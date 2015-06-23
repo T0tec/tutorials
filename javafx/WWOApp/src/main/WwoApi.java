@@ -7,17 +7,21 @@ import java.net.URLEncoder;
 
 public class WwoApi {
 
-  public static final boolean LOGD = false;
+  public static final boolean LOG_DEBUG = false;
 
+  // Refer for documentation to following links:
+  // - http://www.worldweatheronline.com/api/docs/local-city-town-weather-api.aspx
+  // - http://www.worldweatheronline.com/api/docs/search-api.aspx
+  //
   // Replace the key with your own key
   // Obtain key by registering on World Weather Online website
   public static final String FREE_API_KEY = "6f81839c19ed37a2aff40be6a0b59";
   public static final String PREMIUM_API_KEY = "69eb7e06c07b4900093a4eac61082";
 
   private String key;
-  String apiEndPoint;
+  protected String apiEndPoint;
 
-  WwoApi(boolean freeAPI) {
+  public WwoApi(boolean freeAPI) {
     if (freeAPI) {
       setKey(FREE_API_KEY);
     } else {
@@ -25,12 +29,12 @@ public class WwoApi {
     }
   }
 
-  WwoApi setKey(String key) {
+  public WwoApi setKey(String key) {
     this.key = key;
     return this;
   }
 
-  WwoApi setApiEndPoint(String apiEndPoint) {
+  public WwoApi setApiEndPoint(String apiEndPoint) {
     this.apiEndPoint = apiEndPoint;
     return this;
   }

@@ -42,7 +42,6 @@ public class Main extends Application {
     }
     updateGUI();
 
-    //Adding HBox to the scene
     Scene scene = new Scene(sp, 250, 175);
     primaryStage.setScene(scene);
     primaryStage.setResizable(false);
@@ -55,20 +54,24 @@ public class Main extends Application {
         new ObjectMapper().readValue(new URL("http://api.ipify.org/?format=json"), Ip.class);
 
     LocalWeather lw = new LocalWeather(true);
-    String query = (lw.new Params(lw.getKey(), ipAddress.getIp())).withFormat("json").getQueryString(
-        LocalWeather.Params.class);
-    weather = lw.callAPI(query, MediaType.APPLICATION_JSON);
+    String
+        query =
+        (lw.new Params(lw.getKey(), ipAddress.getIp())).withFormat("xml").withFx("no")
+            .getQueryString(LocalWeather.Params.class);
+    weather = lw.callAPI(query, MediaType.APPLICATION_XML);
 
     //get location
     LocationSearch ls = new LocationSearch(true);
-    query = (ls.new Params(ls.getKey(), ipAddress.getIp())).withFormat("json").getQueryString(
-        LocationSearch.Params.class);
-    location = ls.callAPI(query, MediaType.APPLICATION_JSON);
+    query =
+        (ls.new Params(ls.getKey(), ipAddress.getIp())).withFormat("xml").withNumOfResults("1")
+            .getQueryString(LocationSearch.Params.class);
+    location = ls.callAPI(query, MediaType.APPLICATION_XML);
   }
 
   private void updateGUI() {
     Text text1 = new Text(
-        "Location: " + (location.result.region.isEmpty() ? location.result.areaName : location.result.region)
+        "Location: " + (location.result.region.isEmpty() ? location.result.areaName
+                                                         : location.result.region)
         + ", " + location.result.country);
     text1.setFill(Color.BLACK);
     text1.setFont(Font.font("Helvetica", FontWeight.BOLD, 11));

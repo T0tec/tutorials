@@ -47,7 +47,7 @@ public class LocalWeather extends WwoApi {
       // this will create Java object - Data from the XML/JSON response
       weather = (Data) jaxbUnmarshaller.unmarshal(is);
 
-      if (LOGD) {
+      if (LOG_DEBUG) {
         CurrentCondition cc = weather.currentCondition;
         System.out.println(cc.tempC);
         System.out.println(cc.weatherIconUrl);
@@ -65,9 +65,9 @@ public class LocalWeather extends WwoApi {
 
     String query;               // required
     String extra;
-    String numOfDays;     // required
+    String numOfDays;           // required
     String date;
-    String fx = "no";
+    String fx;                  // "no" or "yes"
     String cc;                  // default "yes"
     String includeLocation;     // default "no"
     String format;              // default "xml"
@@ -126,11 +126,6 @@ public class LocalWeather extends WwoApi {
 
     public Params withCallback(String callback) {
       this.callback = callback;
-      return this;
-    }
-
-    public Params withKey(String key) {
-      this.key = key;
       return this;
     }
   }

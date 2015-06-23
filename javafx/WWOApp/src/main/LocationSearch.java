@@ -30,7 +30,6 @@ public class LocationSearch extends WwoApi {
   }
 
   public Data callAPI(String query, MediaType mediaType) {
-    System.out.println(apiEndPoint + query);
     return getLocationSearchData(mediaType, getInputStream(apiEndPoint + query));
   }
 
@@ -48,7 +47,7 @@ public class LocationSearch extends WwoApi {
       // this will create Java object - Data from the XML/JSON response
       location = (Data) jaxbUnmarshaller.unmarshal(is);
 
-      if (LOGD) {
+      if (LOG_DEBUG) {
         System.out.println(location.result.areaName);
         System.out.println(location.result.country);
         System.out.println(location.result.region);
@@ -65,7 +64,7 @@ public class LocationSearch extends WwoApi {
   public class Params extends RootParams {
 
     String query;                 // required
-    String num_of_results = "1";
+    String numOfResults;
     String timezone;
     String popular;
     String format;                // default "xml"
@@ -80,8 +79,8 @@ public class LocationSearch extends WwoApi {
       this.query = query;
     }
 
-    public Params withNumOfResults(String num_of_results) {
-      this.num_of_results = num_of_results;
+    public Params withNumOfResults(String numOfResults) {
+      this.numOfResults = numOfResults;
       return this;
     }
 
@@ -97,11 +96,6 @@ public class LocationSearch extends WwoApi {
 
     public Params withFormat(String format) {
       this.format = format;
-      return this;
-    }
-
-    public Params withKey(String key) {
-      this.key = key;
       return this;
     }
   }
