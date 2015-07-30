@@ -42,6 +42,7 @@ public class RandomWords {
    * @return The created list
    */
   public List<String> createList(int listSize) {
+    System.out.println("Creating list with size " + listSize);
     Random rand = new Random();
     List<String> wordList = rand.ints(listSize, 0, sourceWords.size())
         .mapToObj(s -> sourceWords.get(s))

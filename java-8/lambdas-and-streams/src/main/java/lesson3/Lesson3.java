@@ -95,7 +95,13 @@ public class Lesson3 {
    * @return The list processed in whatever way you want
    */
   static List<String> processWords(List<String> wordList, boolean parallel) {
-    return wordList.stream()
+    Stream<String> stream = wordList.stream();
+
+    if (parallel) {
+      stream = stream.parallel();
+    }
+
+    return stream
         .sorted((a, b) -> a.length() - b.length())
         .map(String::toLowerCase)
         .filter(s -> s.length() % 2 == 1)
@@ -111,11 +117,14 @@ public class Lesson3 {
    */
   public static void main(String[] args) throws IOException {
     RandomWords fullWordList = new RandomWords();
-    List<String> wordList = fullWordList.createList(1000);
+    List<String> wordList = fullWordList.createList(5000); // 10000, 100000, 200000
 
+    // parallel looks more sufficient here (also if size gets bigger)
+    // don't test with too large otherwise it will be too slow
     measure("Sequential", () -> computeLevenshtein(wordList, false));
     measure("Parallel", () -> computeLevenshtein(wordList, true));
 
+    // distinct has a large performance (speed) loss when the list size gets higher
 //    measure("Sequential", () -> processWords(wordList, false));
 //    measure("Parallel", () -> processWords(wordList, true));
   }
